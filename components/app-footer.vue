@@ -16,7 +16,7 @@
     <p class="about" data-aos="fade-down-left">Enlightenment, the news and media division of Sahab Enlightenment, is the world’s largest international multimedia news provider reaching more than one billion people every day. Enlightenment provides trusted business, financial, national, and international news to professionals via Sahab Enlightenment desktops, the world's media organizations, and directly to consumers at Enlightenment.com and via Enlightenment TV.</p>
 
     <ul class="links">
-      <li>&copy; 2018 News</li>
+      <li>&copy; 2018 Enlightenment</li>
 
       <li v-for="(item, index) in links" v-bind:key="index">
         <nuxt-link v-bind:to="'/' + item.link">

@@ -108,13 +108,14 @@ img {
 iframe,
 video {
   display: block;
-  margin: 0 auto;
+  margin: calc(var(--space) / 2) auto;
 }
 
 figcaption {
   color: var(--grey);
   font-size: 0.9em;
   margin-bottom: calc(var(--space) / 2);
+  text-align: center;
 }
 
 .container {
