@@ -109,6 +109,7 @@ iframe,
 video {
   display: block;
   margin: calc(var(--space) / 2) auto;
+  max-width: 100%;
 }
 
 figcaption {
