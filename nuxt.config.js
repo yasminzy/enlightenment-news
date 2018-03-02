@@ -7,7 +7,11 @@ module.exports = {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "Soedja challenge by Yasmin ZY" }
+      {
+        hid: "description",
+        name: "description",
+        content: "Soedja challenge by Yasmin ZY"
+      }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -18,7 +22,7 @@ module.exports = {
       {
         rel: "stylesheet",
         href:
-          "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+          "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       }
     ]
   },
@@ -62,8 +66,8 @@ module.exports = {
   ],
   modules: ["@nuxtjs/axios"],
   router: {
-    scrollBehavior: function (to, from, savedPosition) {
-      return { x: 0, y: 0 }
+    scrollBehavior: function(to, from, savedPosition) {
+      return { x: 0, y: 0 };
     }
   }
 };

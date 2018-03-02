@@ -2,12 +2,12 @@
 <footer>
   <div class="wrapper">
     <div class="social" data-aos="fade-down-right">
-      Follow News:
+      Follow Enlightenment:
 
       <ul>
         <li v-for="(item, index) in social" v-bind:key="index">
           <a v-bind:href="item.link">
-            <i v-bind:class="'icon ion-social-' + item.icon"></i>
+            <i v-bind:class="'fa fa-' + item.icon"></i>
           </a>
         </li>
       </ul>

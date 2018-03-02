@@ -2,7 +2,7 @@
 <small>
   <a href="#top">
     Back to top
-    <i class="icon ion-arrow-up-c"></i>
+    <i class="fa fa-arrow-up"></i>
   </a>
 </small>
 </template>

@@ -5,13 +5,13 @@
 
     <div v-if="this.$store.state.route.path !== '/search'">
       <button v-on:click.prevent="$router.push('/search')">
-        <i class="icon ion-search"></i>
+        <i class="fa fa-search"></i>
       </button>
     </div>
 
     <div v-else>
       <button v-on:click.prevent="search">
-        <i class="icon ion-search"></i>
+        <i class="fa fa-search"></i>
       </button>
     </div>
   </form>
