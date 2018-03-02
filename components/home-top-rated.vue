@@ -46,10 +46,10 @@ export default {
         "gbp",
         "sek",
         "nok",
-        "mxn",
-        "try",
-        "zar",
-        "cnh"
+        "mxn"
+        // "try",
+        // "zar",
+        // "cnh"
         // "xau",
         // "xag"
       ];
@@ -77,7 +77,7 @@ export default {
   padding: 0;
   padding: calc(var(--space) * 2) 0;
 
-  @media (--lg) {
+  @media (--md) {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -114,18 +114,22 @@ li {
 }
 
 table {
+  background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  overflow-x: auto;
   width: 100%;
-}
-
-td,
-th {
-  padding: 0.3em 2.4em 0.3em 0.6em;
+  padding: 1rem;
 }
 
 tr {
   border-bottom: 1px solid var(--grey);
+
+  &:nth-child(odd) {
+    background-color: var(--grey-100);
+  }
 
   &:last-of-type {
     border-bottom: 0;
@@ -133,6 +137,9 @@ tr {
 }
 
 td {
+  padding: 0.75rem;
+  vertical-align: top;
+
   &:nth-child(2),
   &:nth-child(3) {
     font-size: 0.75rem;
