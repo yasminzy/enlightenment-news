@@ -1,0 +1,35 @@
+{
+  "name": "soedja-challenge",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "Yasmin Zulfati Yusrina <yzyusrina@ymail.com>",
+  "private": true,
+  "scripts": {
+    "dev": "HOST=127.0.0.1 nuxt",
+    "build": "nuxt build",
+    "start": "HOST=127.0.0.1 nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.1",
+    "aos": "^2.2.0",
+    "normalize.css": "^8.0.0",
+    "nuxt": "^1.0.0",
+    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^11.1.0",
+    "vue-moment": "^3.2.0",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-vue": "^4.0.0",
+    "rucksack-css": "^1.0.2"
+  }
+}
