@@ -9,7 +9,7 @@
       </header>
 
       <div v-for="subitem in home[item]" v-bind:key="subitem.id" data-aos="fade-up-right">
-        <nuxt-link v-bind:to="{ name: 'id-id', params: { id: subitem.id } }">
+        <nuxt-link v-bind:to="{ name: 'id', params: { id: subitem.id } }">
           <div v-bind:class="['bg', subitem.fields.thumbnail ? '' : 'dark']" v-bind:style="{ backgroundImage: 'url(' + subitem.fields.thumbnail + ')'}">
             <div>
               <h3>{{ subitem.webTitle }}</h3>

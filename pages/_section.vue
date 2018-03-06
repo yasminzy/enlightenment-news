@@ -5,11 +5,11 @@
       <li v-for="item in content" v-bind:key="item.id" data-aos="flip-up">
         <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
-        <h3><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
+        <h3><nuxt-link v-bind:to="{ name: 'id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
 
         <div class="img-wrapper">
-          <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
-            <img class="hvr hvr-grow" v-bind:src="item.fields.thumbnail" v-bind:alt="item.webTitle">
+          <nuxt-link v-bind:to="{ name: 'id', params: { id: item.id } }">
+            <img class="hvr hvr-grow" v-lazy="item.fields.thumbnail" v-bind:alt="item.webTitle">
           </nuxt-link>
         </div>
 
@@ -20,7 +20,7 @@
 
           <ul class="content-tags">
             <li v-for="subitem in item.tags" v-bind:key="subitem.id">
-              <nuxt-link v-bind:to="{ name: 'tags-tags', params: { id: subitem.id } }">
+              <nuxt-link v-bind:to="{ name: 'tag', params: { id: subitem.id } }">
                 <small>#{{ subitem.webTitle }}</small>
               </nuxt-link>
             </li>
@@ -35,7 +35,7 @@
   <aside>
     <ul class="tags wrapper">
       <li v-for="item in tags" v-bind:key="item.id" data-aos="flip-down">
-        <nuxt-link v-bind:to="{ name: 'tags-tags', params: { id: item.id } }">
+        <nuxt-link v-bind:to="{ name: 'tag', params: { id: item.id } }">
           <small>#{{ item.webTitle }}</small>
         </nuxt-link>
       </li>

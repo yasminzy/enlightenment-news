@@ -12,9 +12,9 @@
 
     <ul>
       <li v-for="subitem in home[item]" v-bind:key="subitem.id" data-aos="fade-up-left">
-        <nuxt-link v-bind:to="{ name: 'id-id', params: { id: subitem.id } }">
+        <nuxt-link v-bind:to="{ name: 'id', params: { id: subitem.id } }">
           <div class="img-wrapper">
-            <img class="hvr hvr-grow" v-bind:src="subitem.fields.thumbnail" v-bind:alt="subitem.webTitle">
+            <img class="hvr hvr-grow" v-lazy="subitem.fields.thumbnail" v-bind:alt="subitem.webTitle">
           </div>
 
           <h4>{{ subitem.webTitle }}</h4>

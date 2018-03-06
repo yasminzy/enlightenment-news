@@ -5,7 +5,7 @@
 
     <ul>
       <li v-for="item in home.topRated" v-bind:key="item.id" data-aos="fade-left">
-        <p><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></p>
+        <p><nuxt-link v-bind:to="{ name: 'id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></p>
       </li>
     </ul>
  </div>

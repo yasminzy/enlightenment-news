@@ -61,6 +61,7 @@ module.exports = {
   ],
   plugins: [
     { src: "~/plugins/aos.js", ssr: false },
+    "~/plugins/vue-lazyload.js",
     "~/plugins/vuex-router-sync.js",
     "~/plugins/vue-moment.js"
   ],
