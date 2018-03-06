@@ -1,9 +1,5 @@
 @import "./variables.css";
 
-[v-cloak] {
-  display: none;
-}
-
 html {
   box-sizing: border-box;
 }
@@ -135,10 +131,7 @@ figcaption {
   overflow: hidden;
 }
 
-.w-100 {
-  width: 100%;
-}
-
+/* https://github.com/IanLunn/Hover */
 .hvr-grow {
   display: inline-block;
   vertical-align: middle;

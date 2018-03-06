@@ -1,3 +1,8 @@
+// API docs
+// https://1forge.com/forex-data-api/api-documentation#quotes
+// http://open-platform.theguardian.com/documentation/search
+// http://open-platform.theguardian.com/documentation/tag
+
 import { GUARDIAN_API_KEY, FOREX_API_KEY } from "~/assets/keys";
 
 function urlize(input) {

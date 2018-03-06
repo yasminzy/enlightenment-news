@@ -2,7 +2,7 @@
 <div class="container">
   <article class="wrapper">
     <ul class="content">
-      <li class="hvr hvr-shadow" v-for="item in content" v-bind:key="item.id" data-aos="flip-up">
+      <li v-for="item in content" v-bind:key="item.id" data-aos="flip-up">
         <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
         <h3><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
@@ -60,6 +60,7 @@ export default {
     }
   },
   async created() {
+    // Get articles related to the selected section
     let route = this.$store.state.route.path.replace("/", "");
     this.$store.dispatch("getSectionContent", route);
   }

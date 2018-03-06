@@ -9,7 +9,7 @@
 
   <article class="wrapper">
     <ul class="content">
-      <li class="hvr hvr-shadow" v-for="item in data.response.results" v-bind:key="item.id" data-aos="flip-up">
+      <li v-for="item in data.response.results" v-bind:key="item.id" data-aos="flip-up">
         <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
         <h3><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
@@ -33,10 +33,11 @@ import axios from "axios";
 
 export default {
   async asyncData({ params }) {
+    // Get articles related to the selected tag
     let { data } = await axios.get(
       `https://content.guardianapis.com/${
         params.id
-      }?page-size=25&show-fields=trailText,thumbnail&show-tags=keyword&api-key=${GUARDIAN_API_KEY}`
+      }?page-size=25&show-fields=trailText,thumbnail&api-key=${GUARDIAN_API_KEY}`
     );
     return { data };
   }

@@ -31,6 +31,7 @@ export default {
     }
   },
   async created() {
+    // Get Forex quotes for the generated list. This will dispatch the action to get the top rated content as well. See store/actions.
     let list = this.getPairList();
     this.$store.dispatch("getForexQuotes", list);
   },

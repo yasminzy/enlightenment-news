@@ -38,6 +38,7 @@ export default {
     }
   },
   async created() {
+    // Get 3 news for each section
     for (let i = 0, j = this.sections.length; i < j; i++) {
       let data = {
         section: this.sections[i]

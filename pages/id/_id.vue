@@ -32,6 +32,7 @@ import axios from "axios";
 
 export default {
   async asyncData({ params }) {
+    // Get the article content based on the url
     let { data } = await axios.get(
       `https://content.guardianapis.com/${
         params.id
