@@ -1,7 +1,4 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: "Enlightenment News",
     meta: [
@@ -10,7 +7,7 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: "Soedja challenge by Yasmin ZY"
+        content: "Sample news website by Yasmin ZY"
       }
     ],
     link: [
@@ -26,17 +23,13 @@ module.exports = {
       }
     ]
   },
-  /*
-  ** Customize the progress bar color
-  */
+  css: [
+    "normalize.css/normalize.css",
+    "aos/dist/aos.css",
+    "~/assets/global.css"
+  ],
   loading: { color: "#2196F3" },
-  /*
-  ** Build configuration
-  */
   build: {
-    /*
-    ** Run ESLint on save
-    */
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -54,18 +47,13 @@ module.exports = {
     ],
     vendor: ["aos"]
   },
-  css: [
-    "normalize.css/normalize.css",
-    "aos/dist/aos.css",
-    "~/assets/global.css"
-  ],
+  modules: ["@nuxtjs/axios"],
   plugins: [
     { src: "~/plugins/aos.js", ssr: false },
     "~/plugins/vue-lazyload.js",
-    "~/plugins/vuex-router-sync.js",
-    "~/plugins/vue-moment.js"
+    "~/plugins/vue-moment.js",
+    "~/plugins/vuex-router-sync.js"
   ],
-  modules: ["@nuxtjs/axios"],
   router: {
     scrollBehavior: function(to, from, savedPosition) {
       return { x: 0, y: 0 };

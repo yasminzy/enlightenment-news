@@ -7,7 +7,7 @@
     <input type="text" name="subject" placeholder="Subject" required>
     <textarea name="description" placeholder="Description" required></textarea>
 
-    <input type="hidden" name="_next" value="https://soedja-challenge.netlify.com" />
+    <input type="hidden" name="_next" value="https://enlightenment.netlify.com"/>
 
     <button class="btn btn-primary" type="submit">SUBMIT</button>
   </form>
