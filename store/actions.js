@@ -9,7 +9,7 @@ import {
 } from "~/assets/functions";
 
 export default {
-  async getForexQuotes({ commit, dispatch, state }, list) {
+  async getForexQuotes({ commit, dispatch }, list) {
     await dispatch("getHomeTopRatedContent");
 
     const response = await this.$axios.$get(getForexQuotesUrl(list));
@@ -17,13 +17,13 @@ export default {
     commit("forexQuotes", content);
   },
 
-  async getHomeTopRatedContent({ commit, state }) {
+  async getHomeTopRatedContent({ commit }) {
     const response = await this.$axios.$get(getHomeTopRatedContentUrl());
     const content = response.response.results;
     commit("homeTopRated", content);
   },
 
-  async getHomeContent({ commit, state }, arg) {
+  async getHomeContent({ commit }, arg) {
     const response = await this.$axios.$get(
       getHomeContentUrl(arg.section, arg.size)
     );
@@ -34,7 +34,7 @@ export default {
     commit("home", data);
   },
 
-  async getSectionContent({ commit, dispatch, state }, section) {
+  async getSectionContent({ commit, dispatch }, section) {
     await dispatch("getSectionTags", section);
 
     const response = await this.$axios.$get(getSectionContentUrl(section));
@@ -45,7 +45,7 @@ export default {
     commit("content", data);
   },
 
-  async getSectionTags({ commit, state }, section) {
+  async getSectionTags({ commit }, section) {
     const response = await this.$axios.$get(getSectionTagsUrl(section));
     const data = {
       content: response.response.results,
@@ -54,7 +54,7 @@ export default {
     commit("tags", data);
   },
 
-  async getSearchResults({ commit, state }, query) {
+  async getSearchResults({ commit }, query) {
     const response = await this.$axios.$get(getSearchResultsUrl(query));
     const content = response.response.results;
     commit("searchResults", content);

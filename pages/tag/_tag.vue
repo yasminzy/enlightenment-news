@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import "../assets/variables.css";
+@import "../../assets/variables.css";
 
 .container {
   display: grid;

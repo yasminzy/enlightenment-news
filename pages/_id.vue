@@ -17,7 +17,7 @@
 
     <ul class="content-tags">
       <li v-for="subitem in data.response.content.tags" v-bind:key="subitem.id" data-aos="flip-right">
-        <nuxt-link v-bind:to="{ name: 'tag', params: { id: subitem.id } }">
+        <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }">
           <small>#{{ subitem.webTitle }}</small>
         </nuxt-link>
       </li>

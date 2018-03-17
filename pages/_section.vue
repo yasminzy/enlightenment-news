@@ -20,7 +20,7 @@
 
           <ul class="content-tags">
             <li v-for="subitem in item.tags" v-bind:key="subitem.id">
-              <nuxt-link v-bind:to="{ name: 'tag', params: { id: subitem.id } }">
+              <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }">
                 <small>#{{ subitem.webTitle }}</small>
               </nuxt-link>
             </li>
@@ -35,7 +35,7 @@
   <aside>
     <ul class="tags wrapper">
       <li v-for="item in tags" v-bind:key="item.id" data-aos="flip-down">
-        <nuxt-link v-bind:to="{ name: 'tag', params: { id: item.id } }">
+        <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: item.id } }">
           <small>#{{ item.webTitle }}</small>
         </nuxt-link>
       </li>
