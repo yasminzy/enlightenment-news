@@ -10,16 +10,7 @@
 export default {};
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
-article {
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
+<style scoped>
 h1,
 p {
   text-align: center;

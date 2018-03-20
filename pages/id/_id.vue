@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import "../assets/variables.css";
+@import "../../assets/variables.css";
 
 article {
   padding: calc(var(--space) * 2) var(--space);

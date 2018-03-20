@@ -24,6 +24,5 @@ export default {
 };
 </script>
 
-<style lang="postcss">
-@import "../assets/variables.css";
+<style scoped>
 </style>

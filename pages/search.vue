@@ -16,10 +16,10 @@
         <li class="hvr hvr-shadow" v-for="item in results" v-bind:key="item.id" data-aos="flip-up">
           <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
-          <h3><nuxt-link v-bind:to="{ name: 'id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
+          <h3><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
 
           <div class="img-wrapper">
-            <nuxt-link v-bind:to="{ name: 'id', params: { id: item.id } }">
+            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
               <img class="hvr hvr-grow" v-lazy="item.fields.thumbnail" v-bind:alt="item.webTitle">
             </nuxt-link>
           </div>
