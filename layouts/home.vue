@@ -18,6 +18,5 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
+<style scoped>
 </style>

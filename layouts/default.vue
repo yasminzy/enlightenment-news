@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container mh-100">
   <app-nav/>
   <nuxt class="wrapper"/>
   <app-footer/>
@@ -18,6 +18,8 @@ export default {
 };
 </script>
 
-<style lang="postcss">
-@import "../assets/variables.css";
+<style scoped>
+.mh-100 {
+  min-height: 100vh;
+}
 </style>

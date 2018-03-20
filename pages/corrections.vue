@@ -7,7 +7,8 @@
     <input type="text" name="subject" placeholder="Subject" required>
     <textarea name="description" placeholder="Description" required></textarea>
 
-    <input type="hidden" name="_next" value="https://enlightenment.netlify.com"/>
+    <input type="hidden" name="_subject" value="Enlightenment - Corrections"/>
+    <input type="hidden" name="_next" value="https://enlightenment.netlify.com/submitted"/>
 
     <button class="btn btn-primary" type="submit">SUBMIT</button>
   </form>
