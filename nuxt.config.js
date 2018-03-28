@@ -49,10 +49,10 @@ module.exports = {
   },
   modules: ["@nuxtjs/axios"],
   plugins: [
-    { src: "~/plugins/aos.js", ssr: false },
-    "~/plugins/vue-lazyload.js",
-    "~/plugins/vue-moment.js",
-    "~/plugins/vuex-router-sync.js"
+    { src: "~/plugins/aos", ssr: false },
+    "~/plugins/vue-lazyload",
+    "~/plugins/vue-moment",
+    "~/plugins/vuex-router-sync"
   ],
   router: {
     scrollBehavior: function(to, from, savedPosition) {
