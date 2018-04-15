@@ -23,7 +23,7 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "^8.2.3",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-friendly-formatter": "^3.0.0",
@@ -31,6 +31,6 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-vue": "^4.4.0",
     "rucksack-css": "^1.0.2",
-    "vue-lazyload": "^1.2.2"
+    "vue-lazyload": "^1.2.3"
   }
 }
