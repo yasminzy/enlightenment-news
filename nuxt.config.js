@@ -28,7 +28,7 @@ module.exports = {
     "aos/dist/aos.css",
     "~/assets/global.css"
   ],
-  loading: { color: "#2196F3" },
+  loading: { color: "#3f51b5" },
   build: {
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
