@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.1",
-    "aos": "^2.2.0",
+    "aos": "^2.3.0",
     "normalize.css": "^8.0.0",
     "nuxt": "^1.4.0",
     "postcss-cssnext": "^3.1.0",
