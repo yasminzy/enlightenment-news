@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.1",
-    "aos": "^2.2.0",
+    "aos": "^2.3.3",
     "normalize.css": "^8.0.0",
     "nuxt": "^1.4.1",
     "postcss-cssnext": "^3.1.0",
@@ -23,13 +23,13 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-vue": "^4.5.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-vue": "^4.7.0",
     "rucksack-css": "^1.0.2",
     "vue-lazyload": "^1.2.6"
   }

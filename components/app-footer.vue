@@ -7,7 +7,7 @@
       <ul>
         <li v-for="(item, index) in social" v-bind:key="index">
           <a v-bind:href="item.link">
-            <i v-bind:class="'fa fa-' + item.icon"></i>
+            <i v-bind:class="'icon ion-' + item.icon"></i>
           </a>
         </li>
       </ul>
@@ -36,19 +36,19 @@ export default {
     return {
       social: [
         {
-          icon: "facebook",
+          icon: "logo-facebook",
           link: "hhttps://www.facebook.com"
         },
         {
-          icon: "instagram",
+          icon: "logo-instagram",
           link: "https://www.instagram.com"
         },
         {
-          icon: "twitter",
+          icon: "logo-twitter",
           link: "https://twitter.com"
         },
         {
-          icon: "youtube",
+          icon: "logo-youtube",
           link: "https://www.youtube.com"
         }
       ],

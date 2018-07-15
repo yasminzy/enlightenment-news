@@ -4,7 +4,7 @@
     <header>
       <nuxt-link v-bind:to="'/' + item">
         <h3 data-aos="fade">{{ item.toUpperCase() }}</h3>
-        <i class="icon ion-chevron-right"></i>
+        <i class="icon ion-md-arrow-dropright"></i>
       </nuxt-link>
     </header>
 
