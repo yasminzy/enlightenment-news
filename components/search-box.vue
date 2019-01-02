@@ -1,21 +1,29 @@
 <template>
-<div data-aos="fade">
-  <form>
-    <input type="text" placeholder="What are you looking for?" v-bind:value="query" v-on:input="updateQuery" required>
+  <div data-aos="fade">
+    <form>
+      <input
+        v-bind:value="query"
+        type="text"
+        placeholder="What are you looking for?"
+        required
+        @input="updateQuery"
+      />
 
-    <div v-if="this.$store.state.route.path !== '/search'">
-      <button v-on:click.prevent="$router.push('/search')">
-        <i class="icon ion-md-search"></i>
-      </button>
-    </div>
+      <div
+        v-if="
+          !this.$store.state.route || this.$store.state.route.path !== '/search'
+        "
+      >
+        <button @click.prevent="$router.push('/search')">
+          <ion-icon name="search" />
+        </button>
+      </div>
 
-    <div v-else>
-      <button v-on:click.prevent="search">
-        <i class="icon ion-md-search"></i>
-      </button>
-    </div>
-  </form>
-</div>
+      <div v-else>
+        <button @click.prevent="search"><ion-icon name="search" /></button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -42,9 +50,7 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 form {
   display: grid;
   grid-template-columns: 5fr minmax(max-content, 1fr);

@@ -1,27 +1,27 @@
 <template>
-<article data-aos="fade">
-  <h1>Submit a Request</h1>
+  <article data-aos="fade">
+    <h1>Submit a Request</h1>
 
-  <form action="https://formspree.io/yzyusrina@ymail.com" method="POST">
-    <input type="email" name="_replyto" placeholder="Email" required>
-    <input type="text" name="subject" placeholder="Subject" required>
-    <textarea name="description" placeholder="Description" required></textarea>
-
-    <input type="hidden" name="_subject" value="Enlightenment - Corrections"/>
-    <input type="hidden" name="_next" value="https://enlightenment.netlify.com/submitted"/>
-
-    <button class="btn btn-primary" type="submit">SUBMIT</button>
-  </form>
-</article>
+    <form action="https://formspree.io/yzyusrina@ymail.com" method="POST">
+      <input type="email" name="_replyto" placeholder="Email" required />
+      <input type="text" name="subject" placeholder="Subject" required />
+      <textarea name="description" placeholder="Description" required />
+      <input
+        type="hidden"
+        name="_subject"
+        value="Enlightenment - Corrections"
+      />
+      <input
+        type="hidden"
+        name="_next"
+        value="https://enlightenment.netlify.com/submitted"
+      />
+      <button class="btn btn-primary" type="submit">SUBMIT</button>
+    </form>
+  </article>
 </template>
 
-<script>
-export default {};
-</script>
-
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 button,
 input,
 textarea {

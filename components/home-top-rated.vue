@@ -1,26 +1,38 @@
 <template>
-<section class="container wrapper">
-  <div class="wrapper">
-    <h2 data-aos="fade">Top Rated</h2>
+  <section class="container wrapper">
+    <div class="wrapper">
+      <h2 data-aos="fade">Top Rated</h2>
 
-    <ul>
-      <li v-for="item in home.topRated" v-bind:key="item.id" data-aos="fade-left">
-        <p><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></p>
-      </li>
-    </ul>
- </div>
+      <ul>
+        <li
+          v-for="item in home.topRated"
+          v-bind:key="item.id"
+          data-aos="fade-left"
+        >
+          <p>
+            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{
+              item.webTitle
+            }}</nuxt-link>
+          </p>
+        </li>
+      </ul>
+    </div>
 
- <div class="wrapper">
-   <table>
-     <tr v-for="(item, index) in home.forexQuotes" v-bind:key="index" data-aos="fade-right">
-       <td>{{ item.symbol }}</td>
-       <td>{{ item.bid }}</td>
-       <td>{{ item.ask }}</td>
-       <td>{{ item.price.toFixed(5) }}</td>
-     </tr>
-   </table>
- </div>
-</section>
+    <div class="wrapper">
+      <table>
+        <tr
+          v-for="(item, index) in home.forexQuotes"
+          v-bind:key="index"
+          data-aos="fade-right"
+        >
+          <td>{{ item.symbol }}</td>
+          <td>{{ item.bid }}</td>
+          <td>{{ item.ask }}</td>
+          <td>{{ item.price.toFixed(5) }}</td>
+        </tr>
+      </table>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -69,12 +81,10 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 .container {
   display: grid;
-  grid-gap: var(--space);
+  gap: var(--space);
   padding: 0;
   padding: calc(var(--space) * 2) 0;
 
@@ -83,7 +93,7 @@ export default {
   }
 
   @media (--xl) {
-    grid-gap: calc(var(--space) * 2);
+    gap: calc(var(--space) * 2);
   }
 }
 

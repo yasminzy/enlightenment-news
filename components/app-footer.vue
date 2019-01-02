@@ -1,31 +1,37 @@
 <template>
-<footer>
-  <div class="wrapper">
-    <div class="social" data-aos="fade-down-right">
-      Follow Enlightenment:
+  <footer>
+    <div class="wrapper">
+      <div class="social" data-aos="fade-down-right">
+        Follow Enlightenment:
+        <ul>
+          <li v-for="(item, index) in social" v-bind:key="index">
+            <a v-bind:href="item.link">
+              <ion-icon v-bind:name="item.icon" />
+            </a>
+          </li>
+        </ul>
+      </div>
 
-      <ul>
-        <li v-for="(item, index) in social" v-bind:key="index">
-          <a v-bind:href="item.link">
-            <i v-bind:class="'icon ion-' + item.icon"></i>
-          </a>
+      <p class="about" data-aos="fade-down-left">
+        Enlightenment, the news and media division of Sahab Enlightenment, is
+        the world’s largest international multimedia news provider reaching more
+        than one billion people every day. Enlightenment provides trusted
+        business, financial, national, and international news to professionals
+        via Sahab Enlightenment desktops, the world's media organizations, and
+        directly to consumers at Enlightenment.com and via Enlightenment TV.
+      </p>
+
+      <ul class="links">
+        <li>&copy; 2019 Enlightenment</li>
+
+        <li v-for="(item, index) in links" v-bind:key="index">
+          <nuxt-link v-bind:to="'/' + item.link">
+            <p v-html="item.text"></p>
+          </nuxt-link>
         </li>
       </ul>
     </div>
-
-    <p class="about" data-aos="fade-down-left">Enlightenment, the news and media division of Sahab Enlightenment, is the world’s largest international multimedia news provider reaching more than one billion people every day. Enlightenment provides trusted business, financial, national, and international news to professionals via Sahab Enlightenment desktops, the world's media organizations, and directly to consumers at Enlightenment.com and via Enlightenment TV.</p>
-
-    <ul class="links">
-      <li>&copy; 2018 Enlightenment</li>
-
-      <li v-for="(item, index) in links" v-bind:key="index">
-        <nuxt-link v-bind:to="'/' + item.link">
-          <p v-html="item.text"></p>
-        </nuxt-link>
-      </li>
-    </ul>
-  </div>
-</footer>
+  </footer>
 </template>
 
 <script>
@@ -67,9 +73,7 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 footer {
   color: var(--grey-700);
   background-color: var(--grey-100);
@@ -80,7 +84,7 @@ footer {
   color: var(--grey-700);
   display: grid;
   font-size: 0.9em;
-  grid-row-gap: calc(var(--space) / 2);
+  row-gap: calc(var(--space) / 2);
 }
 
 ul {
@@ -110,8 +114,8 @@ li a {
   font-size: 0.9em;
   padding: 0.5rem 0;
   display: grid;
-  grid-column-gap: var(--space);
-  grid-row-gap: calc(var(--space) / 3);
+  column-gap: var(--space);
+  row-gap: calc(var(--space) / 3);
   grid-template-columns: minmax(max-content, 1fr) 1fr;
 
   & li {

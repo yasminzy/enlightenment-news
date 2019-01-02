@@ -1,9 +1,9 @@
 <template>
-<div class="container">
-  <app-nav/>
-  <nuxt/>
-  <app-footer/>
-</div>
+  <div class="container">
+    <AppNav />
+    <nuxt />
+    <AppFooter />
+  </div>
 </template>
 
 <script>
@@ -17,6 +17,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

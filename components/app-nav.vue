@@ -1,17 +1,21 @@
 <template>
-<nav id="top">
-  <div class="wrapper">
+  <nav id="top">
+    <div class="wrapper">
       <h1 data-aos="fade"><nuxt-link to="/">ENLIGHTENMENT</nuxt-link></h1>
 
       <ul class="categories">
-        <li v-for="(item, index) in categories" v-bind:key="index" data-aos="fade-up">
-          <nuxt-link v-bind:to="'/' + (item.to || urlize(item))">
-            {{ item.label || item }}
-          </nuxt-link>
+        <li
+          v-for="(item, index) in categories"
+          v-bind:key="index"
+          data-aos="fade-up"
+        >
+          <nuxt-link v-bind:to="'/' + (item.to || urlize(item))">{{
+            item.label || item
+          }}</nuxt-link>
         </li>
       </ul>
-  </div>
-</nav>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -40,9 +44,7 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 nav {
   color: var(--white);
   background-color: var(--black);

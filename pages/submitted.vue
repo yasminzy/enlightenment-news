@@ -1,14 +1,10 @@
 <template>
-<article data-aos="fade">
-  <h1>Corrections Submitted</h1>
+  <article data-aos="fade">
+    <h1>Corrections Submitted</h1>
 
-  <p>Thank you. We will take your input into consideration.</p>
-</article>
+    <p>Thank you. We will take your input into consideration.</p>
+  </article>
 </template>
-
-<script>
-export default {};
-</script>
 
 <style scoped>
 h1,

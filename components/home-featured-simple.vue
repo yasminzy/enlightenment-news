@@ -1,25 +1,34 @@
 <template>
-<section>
-  <div class="container wrapper">
-    <div class="wrapper" v-for="(item, index) in sections" v-bind:key="index">
-      <header>
-        <nuxt-link v-bind:to="'/' + item">
-          <h2 data-aos="fade">{{ item.toUpperCase() }}</h2>
-        </nuxt-link>
-      </header>
+  <section>
+    <div class="container wrapper">
+      <div v-for="(item, index) in sections" v-bind:key="index" class="wrapper">
+        <header>
+          <nuxt-link v-bind:to="'/' + item">
+            <h2 data-aos="fade">{{ item.toUpperCase() }}</h2>
+          </nuxt-link>
+        </header>
 
-      <div v-for="subitem in home[item]" v-bind:key="subitem.id" data-aos="fade-up-right">
-        <nuxt-link v-bind:to="{ name: 'id-id', params: { id: subitem.id } }">
-          <div v-bind:class="['bg', subitem.fields.thumbnail ? '' : 'dark']" v-bind:style="{ backgroundImage: 'url(' + subitem.fields.thumbnail + ')'}">
-            <div>
-              <h3>{{ subitem.webTitle }}</h3>
+        <div
+          v-for="subitem in home[item]"
+          v-bind:key="subitem.id"
+          data-aos="fade-up-right"
+        >
+          <nuxt-link v-bind:to="{ name: 'id-id', params: { id: subitem.id } }">
+            <div
+              v-bind:class="['bg', subitem.fields.thumbnail ? '' : 'dark']"
+              v-bind:style="{
+                backgroundImage: 'url(' + subitem.fields.thumbnail + ')'
+              }"
+            >
+              <div>
+                <h3>{{ subitem.webTitle }}</h3>
+              </div>
             </div>
-          </div>
-        </nuxt-link>
+          </nuxt-link>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </template>
 
 <script>
@@ -47,9 +56,7 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 section {
   background-color: var(--grey-100);
   color: var(--white);
@@ -57,7 +64,7 @@ section {
 
 .container {
   display: grid;
-  grid-gap: var(--space);
+  gap: var(--space);
   min-height: 100vh;
 
   @media (--sm) {
@@ -66,7 +73,7 @@ section {
   }
 
   @media (--xl) {
-    grid-gap: calc(var(--space) * 2);
+    gap: calc(var(--space) * 2);
   }
 
   & > div {

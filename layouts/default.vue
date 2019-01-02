@@ -1,9 +1,9 @@
 <template>
-<div class="container mh-100">
-  <app-nav/>
-  <nuxt class="wrapper"/>
-  <app-footer/>
-</div>
+  <div class="container mh-100">
+    <AppNav />
+    <nuxt class="wrapper" />
+    <AppFooter />
+  </div>
 </template>
 
 <script>

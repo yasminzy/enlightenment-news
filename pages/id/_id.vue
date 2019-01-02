@@ -1,29 +1,40 @@
 <template>
-<article>
-  <header data-aos="flip-left">
-    <small>{{ data.response.content.blocks.body[0].publishedDate | moment("calendar") }}</small>
+  <article>
+    <header data-aos="flip-left">
+      <small>{{
+        data.response.content.blocks.body[0].publishedDate | moment("calendar")
+      }}</small>
 
-    <h1>{{ data.response.content.webTitle }}</h1>
+      <h1>{{ data.response.content.webTitle }}</h1>
 
-    <hr>
-  </header>
+      <hr />
+    </header>
 
-  <div v-html="data.response.content.blocks.body[0].bodyHtml" data-aos="fade"></div>
+    <div
+      data-aos="fade"
+      v-html="data.response.content.blocks.body[0].bodyHtml"
+    ></div>
 
-  <footer>
-    <hr>
+    <footer>
+      <hr />
 
-    <p>Related tags:</p>
+      <p>Related tags:</p>
 
-    <ul class="content-tags">
-      <li v-for="subitem in data.response.content.tags" v-bind:key="subitem.id" data-aos="flip-right">
-        <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }">
-          <small>#{{ subitem.webTitle }}</small>
-        </nuxt-link>
-      </li>
-    </ul>
-  </footer>
-</article>
+      <ul class="content-tags">
+        <li
+          v-for="subitem in data.response.content.tags"
+          v-bind:key="subitem.id"
+          data-aos="flip-right"
+        >
+          <nuxt-link
+            v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }"
+          >
+            <small>#{{ subitem.webTitle }}</small>
+          </nuxt-link>
+        </li>
+      </ul>
+    </footer>
+  </article>
 </template>
 
 <script>
@@ -43,9 +54,7 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../../assets/variables.css";
-
+<style scoped>
 article {
   padding: calc(var(--space) * 2) var(--space);
 }
@@ -58,7 +67,7 @@ div {
 
 .content-tags {
   display: grid;
-  grid-column-gap: calc(var(--space) / 2);
+  column-gap: calc(var(--space) / 2);
   grid-template-columns: repeat(2, 1fr);
   list-style-type: none;
   padding-left: 0;

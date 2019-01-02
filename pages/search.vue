@@ -1,35 +1,48 @@
 <template>
-<div>
-  <search-box/>
+  <div>
+    <search-box />
 
-  <div class="container">
-    <aside class="wrapper" data-aos="flip-down">
-      <div v-show="results.length">
-        <p>
-          Result articles related to <span>{{ query }}</span>
-        </p>
-      </div>
-    </aside>
+    <div class="container">
+      <aside class="wrapper" data-aos="flip-down">
+        <div v-show="results.length">
+          <p>
+            Result articles related to <span>{{ query }}</span>
+          </p>
+        </div>
+      </aside>
 
-    <article class="wrapper">
-      <ul class="content">
-        <li class="hvr hvr-shadow" v-for="item in results" v-bind:key="item.id" data-aos="flip-up">
-          <small>{{ item.webPublicationDate | moment("calendar") }}</small>
+      <article class="wrapper">
+        <ul class="content">
+          <li
+            v-for="item in results"
+            v-bind:key="item.id"
+            class="hvr hvr-shadow"
+            data-aos="flip-up"
+          >
+            <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
-          <h3><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
+            <h3>
+              <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+                {{ item.webTitle }}
+              </nuxt-link>
+            </h3>
 
-          <div class="img-wrapper">
-            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
-              <img class="hvr hvr-grow" v-lazy="item.fields.thumbnail" v-bind:alt="item.webTitle">
-            </nuxt-link>
-          </div>
+            <div class="img-wrapper">
+              <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+                <img
+                  v-lazy="item.fields.thumbnail"
+                  v-bind:alt="item.webTitle"
+                  class="hvr hvr-grow"
+                />
+              </nuxt-link>
+            </div>
 
-          <p v-html="item.fields.trailText"></p>
-        </li>
-      </ul>
-    </article>
+            <p v-html="item.fields.trailText"></p>
+          </li>
+        </ul>
+      </article>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -65,12 +78,10 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 .container {
   display: grid;
-  grid-gap: var(--space);
+  gap: var(--space);
   min-height: 100vh;
 
   @media (--md) {
@@ -82,13 +93,13 @@ export default {
   }
 
   @media (--xl) {
-    grid-column-gap: calc(var(--space) * 2);
+    column-gap: calc(var(--space) * 2);
   }
 }
 
 .content {
   display: grid;
-  grid-row-gap: var(--space);
+  row-gap: var(--space);
   list-style-type: none;
   padding-left: 0;
 
@@ -104,7 +115,7 @@ export default {
   }
 
   @media (--sm) {
-    grid-row-gap: calc(var(--space) * 2);
+    row-gap: calc(var(--space) * 2);
   }
 }
 

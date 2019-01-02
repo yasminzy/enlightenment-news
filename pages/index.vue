@@ -1,10 +1,10 @@
 <template>
-<div>
-  <home-top-rated/>
-  <home-featured-simple/>
-  <home-featured/>
-  <search-box class="wrapper"/>
-</div>
+  <div>
+    <home-top-rated />
+    <home-featured-simple />
+    <home-featured />
+    <search-box class="wrapper" />
+  </div>
 </template>
 
 <script>
@@ -23,6 +23,3 @@ export default {
   layout: "home"
 };
 </script>
-
-<style scoped>
-</style>

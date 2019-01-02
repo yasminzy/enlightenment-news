@@ -1,47 +1,57 @@
 <template>
-<div class="container">
-  <article class="wrapper">
-    <ul class="content">
-      <li v-for="item in content" v-bind:key="item.id" data-aos="flip-up">
-        <small>{{ item.webPublicationDate | moment("calendar") }}</small>
+  <div class="container">
+    <article class="wrapper">
+      <ul class="content">
+        <li v-for="item in content" v-bind:key="item.id" data-aos="flip-up">
+          <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
-        <h3><nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{ item.webTitle }}</nuxt-link></h3>
+          <h3>
+            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{
+              item.webTitle
+            }}</nuxt-link>
+          </h3>
 
-        <div class="img-wrapper">
-          <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
-            <img class="hvr hvr-grow" v-lazy="item.fields.thumbnail" v-bind:alt="item.webTitle">
+          <div class="img-wrapper">
+            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+              <img
+                v-lazy="item.fields.thumbnail"
+                v-bind:alt="item.webTitle"
+                class="hvr hvr-grow"
+              />
+            </nuxt-link>
+          </div>
+
+          <p v-html="item.fields.trailText"></p>
+
+          <details>
+            <summary>Tags</summary>
+
+            <ul class="content-tags">
+              <li v-for="subitem in item.tags" v-bind:key="subitem.id">
+                <nuxt-link
+                  v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }"
+                >
+                  <small>#{{ subitem.webTitle }}</small>
+                </nuxt-link>
+              </li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+
+      <search-box />
+    </article>
+
+    <aside>
+      <ul class="tags wrapper">
+        <li v-for="item in tags" v-bind:key="item.id" data-aos="flip-down">
+          <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: item.id } }">
+            <small>#{{ item.webTitle }}</small>
           </nuxt-link>
-        </div>
-
-        <p v-html="item.fields.trailText"></p>
-
-        <details>
-          <summary>Tags</summary>
-
-          <ul class="content-tags">
-            <li v-for="subitem in item.tags" v-bind:key="subitem.id">
-              <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }">
-                <small>#{{ subitem.webTitle }}</small>
-              </nuxt-link>
-            </li>
-          </ul>
-        </details>
-      </li>
-    </ul>
-
-    <search-box/>
-  </article>
-
-  <aside>
-    <ul class="tags wrapper">
-      <li v-for="item in tags" v-bind:key="item.id" data-aos="flip-down">
-        <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: item.id } }">
-          <small>#{{ item.webTitle }}</small>
-        </nuxt-link>
-      </li>
-    </ul>
-  </aside>
-</div>
+        </li>
+      </ul>
+    </aside>
+  </div>
 </template>
 
 <script>
@@ -67,19 +77,17 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
-@import "../assets/variables.css";
-
+<style scoped>
 .container {
   display: grid;
-  grid-gap: var(--space);
+  gap: var(--space);
 
   @media (--md) {
     grid-template-columns: 2fr 1fr;
   }
 
   @media (--xl) {
-    grid-column-gap: calc(var(--space) * 2);
+    column-gap: calc(var(--space) * 2);
   }
 }
 
@@ -92,12 +100,12 @@ export default {
 
 .content {
   display: grid;
-  grid-row-gap: var(--space);
+  row-gap: var(--space);
   min-height: 100vh;
 
   @media (--sm) {
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: var(--space);
+    column-gap: var(--space);
   }
 
   @media (--md) {
@@ -116,7 +124,7 @@ export default {
   }
 
   @media (--sm) {
-    grid-row-gap: calc(var(--space) * 2);
+    row-gap: calc(var(--space) * 2);
   }
 }
 
@@ -130,7 +138,7 @@ img {
 
 .content-tags {
   display: grid;
-  grid-column-gap: calc(var(--space) / 3);
+  column-gap: calc(var(--space) / 3);
   grid-template-columns: repeat(3, 1fr);
 }
 

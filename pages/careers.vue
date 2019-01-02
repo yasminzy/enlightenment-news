@@ -1,33 +1,43 @@
 <template>
-<article data-aos="fade">
-  <h1>We're hiring!</h1>
+  <article data-aos="fade">
+    <h1>We're hiring!</h1>
 
-  <p>Build a career without boundaries. Do work that matters, with the flexibility to pursue your passion wherever it leads. Bring your ambition to make a difference. We’ll bring a world of opportunities.</p>
+    <p>
+      Build a career without boundaries. Do work that matters, with the
+      flexibility to pursue your passion wherever it leads. Bring your ambition
+      to make a difference. We’ll bring a world of opportunities.
+    </p>
 
-  <ul>
-    <li v-for="(item, index) in vacancies" v-bind:key="index">
-      <h2>{{ item.title }}</h2>
+    <ul>
+      <li v-for="item in vacancies" v-bind:key="item.title">
+        <h2>{{ item.title }}</h2>
 
-      <p>{{ item.scope }}</p>
+        <p>{{ item.scope }}</p>
 
-      <h3>Qualifications</h3>
+        <h3>Qualifications</h3>
 
-      <ul>
-        <li v-for="(subitem, index) in vacancies[index].qualifications" v-bind:key="index">
-          {{ subitem }}
-        </li>
-      </ul>
+        <ul>
+          <li
+            v-for="(subitem, index) in vacancies[index].qualifications"
+            v-bind:key="index"
+          >
+            {{ subitem }}
+          </li>
+        </ul>
 
-      <h3>Responsibilities</h3>
+        <h3>Responsibilities</h3>
 
-      <ul>
-        <li v-for="(subitem, index) in vacancies[index].responsibilities" v-bind:key="index">
-          {{ subitem }}
-        </li>
-      </ul>
-    </li>
-  </ul>
-</article>
+        <ul>
+          <li
+            v-for="(subitem, index) in vacancies[index].responsibilities"
+            v-bind:key="index"
+          >
+            {{ subitem }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </article>
 </template>
 
 <script>
@@ -105,6 +115,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>
