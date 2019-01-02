@@ -1,5 +1,4 @@
 import {
-  urlize,
   getForexQuotesUrl,
   getHomeTopRatedContentUrl,
   getHomeContentUrl,
