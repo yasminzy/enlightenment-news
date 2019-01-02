@@ -1,4 +1,7 @@
+const pkg = require("./package");
+
 module.exports = {
+  mode: "universal",
   head: {
     title: "Enlightenment News",
     meta: [
@@ -7,7 +10,7 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: "Sample news website by Yasmin ZY"
+        content: pkg.description
       }
     ],
     link: [
@@ -15,22 +18,26 @@ module.exports = {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Roboto:400,700"
-      },
-      {
-        rel: "stylesheet",
-        href: "https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css"
       }
-    ]
+    ],
+    script: [{ src: "https://unpkg.com/ionicons/dist/ionicons.js", body: true }]
   },
+  loading: { color: "#3f51b5" },
   css: [
     "normalize.css/normalize.css",
     "aos/dist/aos.css",
     "~/assets/global.css"
   ],
-  loading: { color: "#3f51b5" },
+  plugins: [
+    { src: "~/plugins/aos", ssr: false },
+    "~/plugins/vue-lazyload",
+    "~/plugins/vue-moment",
+    "~/plugins/vuex-router-sync"
+  ],
+  modules: ["@nuxtjs/axios"],
   build: {
-    extend(config, { isDev, isClient }) {
-      if (isDev && isClient) {
+    extend(config, ctx) {
+      if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: "pre",
           test: /\.(js|vue)$/,
@@ -39,22 +46,19 @@ module.exports = {
         });
       }
     },
-    postcss: [
-      require("postcss-import")(),
-      require("postcss-cssnext")(),
-      require("rucksack-css")()
-    ],
-    vendor: ["aos"]
+    postcss: {
+      plugins: {
+        "postcss-import": {},
+        "postcss-preset-env": {
+          stage: 0,
+          importFrom: "./assets/variables.css"
+        },
+        "rucksack-css": {}
+      }
+    }
   },
-  modules: ["@nuxtjs/axios"],
-  plugins: [
-    { src: "~/plugins/aos", ssr: false },
-    "~/plugins/vue-lazyload",
-    "~/plugins/vue-moment",
-    "~/plugins/vuex-router-sync"
-  ],
   router: {
-    scrollBehavior: function(to, from, savedPosition) {
+    scrollBehavior: function() {
       return { x: 0, y: 0 };
     }
   }
