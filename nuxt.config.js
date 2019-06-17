@@ -5,9 +5,8 @@ export default {
   head: {
     title: "Enlightenment News",
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: pkg.description }
+      { hid: "description", name: "description", content: pkg.description },
+      { name: "http-equiv", content: "upgrade-insecure-requests" }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -31,7 +30,6 @@ export default {
     { src: "~/plugins/aos", ssr: false }
   ],
   modules: ["@nuxtjs/axios", "@nuxtjs/dotenv"],
-  axios: {},
   build: {
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
