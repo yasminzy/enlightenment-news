@@ -3,11 +3,11 @@ export default {
     return state.home;
   },
   content(state) {
-    let route = state.route.path.replace("/", "");
+    const route = state.route.path.replace("/", "");
     return state.content[route];
   },
   tags(state) {
-    let route = state.route.path.replace("/", "");
+    const route = state.route.path.replace("/", "");
     return state.tags[route];
   },
   searchQuery(state) {
