@@ -6,7 +6,10 @@ export default {
     title: "Enlightenment News",
     meta: [
       { hid: "description", name: "description", content: pkg.description },
-      { name: "http-equiv", content: "upgrade-insecure-requests" }
+      {
+        "http-equiv": "Content-Security-Policy",
+        content: "upgrade-insecure-requests"
+      }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
