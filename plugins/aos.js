@@ -1,5 +1,5 @@
 import AOS from "aos";
 
-export default ({ app }, inject) => {
-  app.AOS = new AOS.init();
+export default ({ app }) => {
+  app.AOS = new AOS.init(); // eslint-disable-line new-cap
 };
