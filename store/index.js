@@ -1,17 +1,20 @@
-import Vuex from "vuex";
+import storeActions from "./actions";
+import storeGetters from "./getters";
+import storeMutations from "./mutations";
+import storeState from "./state";
 
-import actions from "./actions";
-import getters from "./getters";
-import mutations from "./mutations";
-import state from "./state";
+export const actions = () => ({
+  storeActions
+});
 
-const store = () => {
-  return new Vuex.Store({
-    actions,
-    getters,
-    mutations,
-    state
-  });
-};
+export const getters = () => ({
+  storeGetters
+});
 
-export default store;
+export const mutations = () => ({
+  storeMutations
+});
+
+export const state = () => ({
+  storeState
+});
