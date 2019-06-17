@@ -9,7 +9,7 @@
     </p>
 
     <ul>
-      <li v-for="item in vacancies" v-bind:key="item.title">
+      <li v-for="item in vacancies" :key="item.title">
         <h2>{{ item.title }}</h2>
 
         <p>{{ item.scope }}</p>
@@ -19,7 +19,7 @@
         <ul>
           <li
             v-for="(subitem, index) in vacancies[index].qualifications"
-            v-bind:key="index"
+            :key="index"
           >
             {{ subitem }}
           </li>
@@ -30,7 +30,7 @@
         <ul>
           <li
             v-for="(subitem, index) in vacancies[index].responsibilities"
-            v-bind:key="index"
+            :key="index"
           >
             {{ subitem }}
           </li>

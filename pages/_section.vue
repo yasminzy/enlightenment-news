@@ -2,20 +2,20 @@
   <div class="container">
     <article class="wrapper">
       <ul class="content">
-        <li v-for="item in content" v-bind:key="item.id" data-aos="flip-up">
+        <li v-for="item in content" :key="item.id" data-aos="flip-up">
           <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
           <h3>
-            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{
+            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">{{
               item.webTitle
             }}</nuxt-link>
           </h3>
 
           <div class="img-wrapper">
-            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
               <img
                 v-lazy="item.fields.thumbnail"
-                v-bind:alt="item.webTitle"
+                :alt="item.webTitle"
                 class="hvr hvr-grow"
               />
             </nuxt-link>
@@ -27,9 +27,9 @@
             <summary>Tags</summary>
 
             <ul class="content-tags">
-              <li v-for="subitem in item.tags" v-bind:key="subitem.id">
+              <li v-for="subitem in item.tags" :key="subitem.id">
                 <nuxt-link
-                  v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }"
+                  :to="{ name: 'tag-tag', params: { id: subitem.id } }"
                 >
                   <small>#{{ subitem.webTitle }}</small>
                 </nuxt-link>
@@ -44,8 +44,8 @@
 
     <aside>
       <ul class="tags wrapper">
-        <li v-for="item in tags" v-bind:key="item.id" data-aos="flip-down">
-          <nuxt-link v-bind:to="{ name: 'tag-tag', params: { id: item.id } }">
+        <li v-for="item in tags" :key="item.id" data-aos="flip-down">
+          <nuxt-link :to="{ name: 'tag-tag', params: { id: item.id } }">
             <small>#{{ item.webTitle }}</small>
           </nuxt-link>
         </li>
@@ -71,8 +71,8 @@ export default {
   },
   async created() {
     // Get articles related to the selected section
-    let route = this.$store.state.route.path.replace("/", "");
-    this.$store.dispatch("getSectionContent", route);
+    const route = this.$store.state.route.path.replace("/", "");
+    await this.$store.dispatch("getSectionContent", route);
   }
 };
 </script>

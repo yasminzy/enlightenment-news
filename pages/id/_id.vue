@@ -23,12 +23,10 @@
       <ul class="content-tags">
         <li
           v-for="subitem in data.response.content.tags"
-          v-bind:key="subitem.id"
+          :key="subitem.id"
           data-aos="flip-right"
         >
-          <nuxt-link
-            v-bind:to="{ name: 'tag-tag', params: { id: subitem.id } }"
-          >
+          <nuxt-link :to="{ name: 'tag-tag', params: { id: subitem.id } }">
             <small>#{{ subitem.webTitle }}</small>
           </nuxt-link>
         </li>
@@ -38,16 +36,13 @@
 </template>
 
 <script>
-import { GUARDIAN_API_KEY } from "~/assets/keys";
 import axios from "axios";
 
 export default {
   async asyncData({ params }) {
     // Get the article content based on the url
-    let { data } = await axios.get(
-      `https://content.guardianapis.com/${
-        params.id
-      }?show-blocks=body&show-tags=all&api-key=${GUARDIAN_API_KEY}`
+    const { data } = await axios.get(
+      `https://content.guardianapis.com/${params.id}?show-blocks=body&show-tags=all&api-key=${process.env.VUE_APP_GUARDIAN_API_KEY}`
     );
     return { data };
   }

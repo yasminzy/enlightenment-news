@@ -4,13 +4,9 @@
       <h2 data-aos="fade">Top Rated</h2>
 
       <ul>
-        <li
-          v-for="item in home.topRated"
-          v-bind:key="item.id"
-          data-aos="fade-left"
-        >
+        <li v-for="item in home.topRated" :key="item.id" data-aos="fade-left">
           <p>
-            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">{{
+            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">{{
               item.webTitle
             }}</nuxt-link>
           </p>
@@ -20,15 +16,25 @@
 
     <div class="wrapper">
       <table>
+        <caption>
+          Base currency:
+          {{
+            home.fixerRates.base
+          }}
+        </caption>
+
+        <tr>
+          <th>Currency</th>
+          <th>Rate</th>
+        </tr>
+
         <tr
-          v-for="(item, index) in home.forexQuotes"
-          v-bind:key="index"
+          v-for="(item, index) in home.fixerRates.rates"
+          :key="index"
           data-aos="fade-right"
         >
-          <td>{{ item.symbol }}</td>
-          <td>{{ item.bid }}</td>
-          <td>{{ item.ask }}</td>
-          <td>{{ item.price.toFixed(5) }}</td>
+          <td>{{ item[0] }}</td>
+          <td>{{ item[1] }}</td>
         </tr>
       </table>
     </div>
@@ -43,39 +49,32 @@ export default {
     }
   },
   async created() {
-    // Get Forex quotes for the generated list. This will dispatch the action to get the top rated content as well. See store/actions.
-    let list = this.getPairList();
-    this.$store.dispatch("getForexQuotes", list);
+    // Get Fixer exchange rate for the generated symbols. This will dispatch the action to get the top rated content as well. See store/actions.
+    const symbols = this.getSymbols();
+    await this.$store.dispatch("getLatestExchangeRate", symbols);
   },
   methods: {
-    getPairList() {
-      const ids = [
-        "eur",
-        "jpy",
-        "chf",
-        "aud",
-        "cad",
-        "nzd",
-        "gbp",
-        "sek",
-        "nok",
-        "mxn"
-        // "try",
-        // "zar",
-        // "cnh"
-        // "xau",
-        // "xag"
+    getSymbols() {
+      const symbolsList = [
+        "USD",
+        "AUD",
+        "CAD",
+        "CNY",
+        "GBP",
+        "IDR",
+        "JPY",
+        "KRW",
+        "SAR"
       ];
-      let base = "usd",
-        pair = "";
-      for (let i = 0, j = ids.length; i < j; i++) {
-        if (i != j - 1) {
-          pair += ids[i] + base + ",";
+      let symbols = `symbols=`;
+      for (let i = 0, j = symbolsList.length; i < j; i++) {
+        if (i !== j - 1) {
+          symbols += symbolsList[i] + ",";
         } else {
-          pair += ids[i] + base;
+          symbols += symbolsList[i];
         }
       }
-      return pair.toUpperCase();
+      return symbols;
     }
   }
 };
@@ -89,7 +88,7 @@ export default {
   padding: calc(var(--space) * 2) 0;
 
   @media (--md) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
   }
 
   @media (--xl) {
@@ -130,9 +129,15 @@ table {
   border-spacing: 0;
   margin-bottom: 1rem;
   max-width: 100%;
+  text-align: center;
   overflow-x: auto;
   width: 100%;
   padding: 1rem;
+}
+
+caption {
+  text-align-last: left;
+  margin-bottom: 1rem;
 }
 
 tr {
@@ -155,10 +160,6 @@ td {
   &:nth-child(3) {
     font-size: 0.75rem;
     opacity: 0.75;
-  }
-
-  &:last-child {
-    text-align: right;
   }
 }
 </style>

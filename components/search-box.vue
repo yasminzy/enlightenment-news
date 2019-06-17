@@ -2,9 +2,9 @@
   <div data-aos="fade">
     <form>
       <input
-        v-bind:value="query"
         type="text"
         placeholder="What are you looking for?"
+        :value="query"
         required
         @input="updateQuery"
       />
@@ -15,12 +15,14 @@
         "
       >
         <button @click.prevent="$router.push('/search')">
-          <ion-icon name="search" />
+          <i class="icon ion-md-search"></i>
         </button>
       </div>
 
       <div v-else>
-        <button @click.prevent="search"><ion-icon name="search" /></button>
+        <button @click.prevent="search">
+          <i class="icon ion-md-search"></i>
+        </button>
       </div>
     </form>
   </div>
@@ -40,7 +42,7 @@ export default {
       this.$store.commit("updateQuery", event.target.value);
     },
     search() {
-      let query = urlize(this.query);
+      const query = urlize(this.query);
       if (query) {
         this.$store.dispatch("getSearchResults", query);
       }

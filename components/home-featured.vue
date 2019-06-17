@@ -1,10 +1,10 @@
 <template>
   <section class="container wrapper">
-    <div v-for="(item, index) in sections" v-bind:key="index" class="wrapper">
+    <div v-for="(item, index) in sections" :key="index" class="wrapper">
       <header>
-        <nuxt-link v-bind:to="'/' + item">
+        <nuxt-link :to="'/' + item">
           <h3 data-aos="fade">{{ item.toUpperCase() }}</h3>
-          <ion-icon name="arrow-dropright" />
+          <i class="icon ion-md-arrow-dropright"></i>
         </nuxt-link>
       </header>
 
@@ -13,14 +13,14 @@
       <ul>
         <li
           v-for="subitem in home[item]"
-          v-bind:key="subitem.id"
+          :key="subitem.id"
           data-aos="fade-up-left"
         >
-          <nuxt-link v-bind:to="{ name: 'id-id', params: { id: subitem.id } }">
+          <nuxt-link :to="{ name: 'id-id', params: { id: subitem.id } }">
             <div class="img-wrapper">
               <img
                 v-lazy="subitem.fields.thumbnail"
-                v-bind:alt="subitem.webTitle"
+                :alt="subitem.webTitle"
                 class="hvr hvr-grow"
               />
             </div>
@@ -48,11 +48,11 @@ export default {
   async created() {
     // Get 3 news for each section
     for (let i = 0, j = this.sections.length; i < j; i++) {
-      let data = {
+      const data = {
         section: this.sections[i]
       };
       data.size = 3;
-      this.$store.dispatch("getHomeContent", data);
+      await this.$store.dispatch("getHomeContent", data);
     }
   }
 };

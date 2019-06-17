@@ -4,9 +4,9 @@
       <div class="social" data-aos="fade-down-right">
         Follow Enlightenment:
         <ul>
-          <li v-for="(item, index) in social" v-bind:key="index">
-            <a v-bind:href="item.link">
-              <ion-icon v-bind:name="item.icon" />
+          <li v-for="(item, index) in social" :key="index">
+            <a :href="item.link">
+              <i :class="'icon ion-' + item.icon"></i>
             </a>
           </li>
         </ul>
@@ -22,10 +22,10 @@
       </p>
 
       <ul class="links">
-        <li>&copy; 2019 Enlightenment</li>
+        <li>&copy; 2018-2019 Enlightenment</li>
 
-        <li v-for="(item, index) in links" v-bind:key="index">
-          <nuxt-link v-bind:to="'/' + item.link">
+        <li v-for="(item, index) in links" :key="index">
+          <nuxt-link :to="'/' + item.link">
             <p v-html="item.text"></p>
           </nuxt-link>
         </li>

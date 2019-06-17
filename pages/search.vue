@@ -15,23 +15,23 @@
         <ul class="content">
           <li
             v-for="item in results"
-            v-bind:key="item.id"
+            :key="item.id"
             class="hvr hvr-shadow"
             data-aos="flip-up"
           >
             <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
             <h3>
-              <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+              <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
                 {{ item.webTitle }}
               </nuxt-link>
             </h3>
 
             <div class="img-wrapper">
-              <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+              <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
                 <img
                   v-lazy="item.fields.thumbnail"
-                  v-bind:alt="item.webTitle"
+                  :alt="item.webTitle"
                   class="hvr hvr-grow"
                 />
               </nuxt-link>
@@ -63,12 +63,12 @@ export default {
   },
   async created() {
     if (this.query) {
-      this.search();
+      await this.search();
     }
   },
   methods: {
     search() {
-      let query = urlize(this.query);
+      const query = urlize(this.query);
       if (query) {
         this.$store.dispatch("getSearchResults", query);
       }

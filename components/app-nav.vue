@@ -4,12 +4,8 @@
       <h1 data-aos="fade"><nuxt-link to="/">ENLIGHTENMENT</nuxt-link></h1>
 
       <ul class="categories">
-        <li
-          v-for="(item, index) in categories"
-          v-bind:key="index"
-          data-aos="fade-up"
-        >
-          <nuxt-link v-bind:to="'/' + (item.to || urlize(item))">{{
+        <li v-for="(item, index) in categories" :key="index" data-aos="fade-up">
+          <nuxt-link :to="'/' + (item.to || urlize(item))">{{
             item.label || item
           }}</nuxt-link>
         </li>

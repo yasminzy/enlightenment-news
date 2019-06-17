@@ -1,22 +1,22 @@
 <template>
   <section>
     <div class="container wrapper">
-      <div v-for="(item, index) in sections" v-bind:key="index" class="wrapper">
+      <div v-for="(item, index) in sections" :key="index" class="wrapper">
         <header>
-          <nuxt-link v-bind:to="'/' + item">
+          <nuxt-link :to="'/' + item">
             <h2 data-aos="fade">{{ item.toUpperCase() }}</h2>
           </nuxt-link>
         </header>
 
         <div
           v-for="subitem in home[item]"
-          v-bind:key="subitem.id"
+          :key="subitem.id"
           data-aos="fade-up-right"
         >
-          <nuxt-link v-bind:to="{ name: 'id-id', params: { id: subitem.id } }">
+          <nuxt-link :to="{ name: 'id-id', params: { id: subitem.id } }">
             <div
-              v-bind:class="['bg', subitem.fields.thumbnail ? '' : 'dark']"
-              v-bind:style="{
+              :class="['bg', subitem.fields.thumbnail ? '' : 'dark']"
+              :style="{
                 backgroundImage: 'url(' + subitem.fields.thumbnail + ')'
               }"
             >
@@ -46,11 +46,11 @@ export default {
   async created() {
     // Get 1 news for each section
     for (let i = 0, j = this.sections.length; i < j; i++) {
-      let data = {
+      const data = {
         section: this.sections[i]
       };
       data.size = 1;
-      this.$store.dispatch("getHomeContent", data);
+      await this.$store.dispatch("getHomeContent", data);
     }
   }
 };

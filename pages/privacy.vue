@@ -2,17 +2,14 @@
   <div>
     <aside>
       <ul>
-        <li v-for="item in toc" v-bind:key="item.label" data-aos="fade">
-          <a v-bind:href="'#' + urlize(item.label)" class="label">
+        <li v-for="item in toc" :key="item.label" data-aos="fade">
+          <a :href="'#' + urlize(item.label)" class="label">
             {{ item.label }}</a
           >
 
           <ul>
-            <li
-              v-for="(subitem, index) in toc[index].sublabel"
-              v-bind:key="index"
-            >
-              <a v-bind:href="'#' + urlize(subitem)">{{ subitem }}</a>
+            <li v-for="(subitem, index) in toc[index].sublabel" :key="index">
+              <a :href="'#' + urlize(subitem)">{{ subitem }}</a>
             </li>
           </ul>
         </li>
@@ -47,7 +44,7 @@
       </p>
 
       <p>
-        <strong>This Statement was last updated on February 28, 2019.</strong>
+        <strong>This Statement was last updated on February 28, 2018.</strong>
       </p>
 
       <h2 id="personal-information">Personal information</h2>

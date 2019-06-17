@@ -13,23 +13,23 @@
       <ul class="content">
         <li
           v-for="item in data.response.results"
-          v-bind:key="item.id"
+          :key="item.id"
           data-aos="flip-up"
         >
           <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
           <h3>
-            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
               {{ item.webTitle }}
             </nuxt-link>
           </h3>
 
           <div class="img-wrapper">
-            <nuxt-link v-bind:to="{ name: 'id-id', params: { id: item.id } }">
+            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
               <img
                 class="hvr hvr-grow"
-                v-bind:src="item.fields.thumbnail"
-                v-bind:alt="item.webTitle"
+                :src="item.fields.thumbnail"
+                :alt="item.webTitle"
               />
             </nuxt-link>
           </div>
@@ -42,16 +42,13 @@
 </template>
 
 <script>
-import { GUARDIAN_API_KEY } from "~/assets/keys";
 import axios from "axios";
 
 export default {
   async asyncData({ params }) {
     // Get articles related to the selected tag
-    let { data } = await axios.get(
-      `https://content.guardianapis.com/${
-        params.id
-      }?page-size=25&show-fields=trailText,thumbnail&api-key=${GUARDIAN_API_KEY}`
+    const { data } = await axios.get(
+      `https://content.guardianapis.com/${params.id}?page-size=25&show-fields=trailText,thumbnail&api-key=${process.env.VUE_APP_GUARDIAN_API_KEY}`
     );
     return { data };
   }
