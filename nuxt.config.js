@@ -1,17 +1,13 @@
-const pkg = require("./package");
+import pkg from "./package";
 
-module.exports = {
+export default {
   mode: "universal",
   head: {
     title: "Enlightenment News",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        hid: "description",
-        name: "description",
-        content: pkg.description
-      }
+      { hid: "description", name: "description", content: pkg.description }
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -29,12 +25,13 @@ module.exports = {
     "~/assets/global.css"
   ],
   plugins: [
-    { src: "~/plugins/aos", ssr: false },
     "~/plugins/vue-lazyload",
     "~/plugins/vue-moment",
-    "~/plugins/vuex-router-sync"
+    "~/plugins/vuex-router-sync",
+    { src: "~/plugins/aos", ssr: false }
   ],
-  modules: ["@nuxtjs/axios"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/dotenv"],
+  axios: {},
   build: {
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
