@@ -1,5 +1,5 @@
 // API docs
-// https://fixer.io/documentation
+// https://exchangeratesapi.io/
 // http://open-platform.theguardian.com/documentation/search
 // http://open-platform.theguardian.com/documentation/tag
 
@@ -10,8 +10,8 @@ function urlize(input) {
     .replace(/[^-a-z0-9A-Z_]/g, "");
 }
 
-function getLatestExchangeRateUrl(symbols) {
-  return `http://data.fixer.io/api/latest?access_key=${process.env.VUE_APP_FIXER_API_KEY}&${symbols}`;
+function getLatestExchangeRateUrl(options) {
+  return `https://api.exchangeratesapi.io/latest?${options}`;
 }
 
 function getHomeTopRatedContentUrl() {

@@ -8,15 +8,15 @@ import {
 } from "~/assets/functions";
 
 export default {
-  async getLatestExchangeRate({ commit, dispatch }, symbols) {
+  async getLatestExchangeRate({ commit, dispatch }, options) {
     await dispatch("getHomeTopRatedContent");
 
-    const response = await this.$axios.$get(getLatestExchangeRateUrl(symbols));
+    const response = await this.$axios.$get(getLatestExchangeRateUrl(options));
     const content = {
       base: response.base,
       rates: Object.entries(response.rates)
     };
-    commit("fixerRates", content);
+    commit("exchangeRates", content);
   },
 
   async getHomeTopRatedContent({ commit }) {

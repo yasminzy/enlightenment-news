@@ -19,7 +19,7 @@
         <caption>
           Base currency:
           {{
-            home.fixerRates.base
+            home.exchangeRates.base
           }}
         </caption>
 
@@ -29,7 +29,7 @@
         </tr>
 
         <tr
-          v-for="(item, index) in home.fixerRates.rates"
+          v-for="(item, index) in home.exchangeRates.rates"
           :key="index"
           data-aos="fade-right"
         >
@@ -49,32 +49,25 @@ export default {
     }
   },
   async created() {
-    // Get Fixer exchange rate for the generated symbols. This will dispatch the action to get the top rated content as well. See store/actions.
-    const symbols = this.getSymbols();
-    await this.$store.dispatch("getLatestExchangeRate", symbols);
+    // Get foreign exchange rates for the generated options. This will dispatch the action to get the top rated content as well. See store/actions.
+    const options = this.getOptions();
+    await this.$store.dispatch("getLatestExchangeRate", options);
   },
   methods: {
-    getSymbols() {
-      const symbolsList = [
-        "USD",
-        "AUD",
-        "CAD",
-        "CNY",
-        "GBP",
-        "IDR",
-        "JPY",
-        "KRW",
-        "SAR"
-      ];
-      let symbols = `symbols=`;
-      for (let i = 0, j = symbolsList.length; i < j; i++) {
+    getOptions() {
+      const base = "USD";
+      const symbols = ["AUD", "CAD", "CNY", "EUR", "GBP", "IDR", "JPY", "KRW"];
+
+      let options = `base=${base}&symbols=`;
+
+      for (let i = 0, j = symbols.length; i < j; i++) {
         if (i !== j - 1) {
-          symbols += symbolsList[i] + ",";
+          options += symbols[i] + ",";
         } else {
-          symbols += symbolsList[i];
+          options += symbols[i];
         }
       }
-      return symbols;
+      return options;
     }
   }
 };

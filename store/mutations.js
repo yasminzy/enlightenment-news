@@ -1,6 +1,6 @@
 export default {
-  fixerRates(state, content) {
-    state.home.fixerRates = content;
+  exchangeRates(state, content) {
+    state.home.exchangeRates = content;
   },
   homeTopRated(state, content) {
     state.home.topRated = content;
