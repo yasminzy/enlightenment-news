@@ -58,5 +58,9 @@ export default {
     scrollBehavior: function() {
       return { x: 0, y: 0 };
     }
+  },
+  env: {
+    VUE_APP_GUARDIAN_API_KEY: process.env.VUE_APP_GUARDIAN_API_KEY,
+    VUE_APP_FIXER_API_KEY: process.env.VUE_APP_FIXER_API_KEY
   }
 };
