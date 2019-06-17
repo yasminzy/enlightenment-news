@@ -2,7 +2,7 @@
   <article data-aos="fade">
     <h1>Terms of Use</h1>
 
-    <p>Updated on February 28, 2019</p>
+    <p>Updated on June 18, 2019</p>
 
     <p>
       These Terms of Use shall govern your use of the reuters.com website, any
