@@ -1,6 +1,6 @@
 export default {
   home: {
-    forexQuotes: [],
+    fixerRates: [],
     topRated: [],
     world: [],
     science: [],

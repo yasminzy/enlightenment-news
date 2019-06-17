@@ -1,5 +1,5 @@
 import {
-  getForexQuotesUrl,
+  getLatestExchangeRateUrl,
   getHomeTopRatedContentUrl,
   getHomeContentUrl,
   getSectionContentUrl,
@@ -8,12 +8,15 @@ import {
 } from "~/assets/functions";
 
 export default {
-  async getForexQuotes({ commit, dispatch }, list) {
+  async getLatestExchangeRate({ commit, dispatch }, symbols) {
     await dispatch("getHomeTopRatedContent");
 
-    const response = await this.$axios.$get(getForexQuotesUrl(list));
-    const content = response;
-    commit("forexQuotes", content);
+    const response = await this.$axios.$get(getLatestExchangeRateUrl(symbols));
+    const content = {
+      base: response.base,
+      rates: Object.entries(response.rates)
+    };
+    commit("fixerRates", content);
   },
 
   async getHomeTopRatedContent({ commit }) {

@@ -1,9 +1,9 @@
 export default {
-  forexQuotes(state, content) {
-    state.home["forexQuotes"] = content;
+  fixerRates(state, content) {
+    state.home.fixerRates = content;
   },
   homeTopRated(state, content) {
-    state.home["topRated"] = content;
+    state.home.topRated = content;
   },
   home(state, payload) {
     state.home[payload.section] = payload.content;
