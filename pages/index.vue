@@ -1,9 +1,9 @@
 <template>
   <div>
-    <home-top-rated />
-    <home-featured-simple />
-    <home-featured />
-    <search-box class="wrapper" />
+    <HomeTopRated />
+    <HomeFeaturedSimple />
+    <HomeFeatured />
+    <SearchBox class="wrapper" />
   </div>
 </template>
 
