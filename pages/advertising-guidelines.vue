@@ -1,5 +1,5 @@
 <template>
-  <article data-aos="fade">
+  <article>
     <h1>Advertising Guidelines</h1>
 
     <p>

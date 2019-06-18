@@ -1,10 +1,10 @@
 <template>
   <section class="container wrapper">
-    <div class="wrapper">
-      <h2 data-aos="fade">Top Rated</h2>
+    <div class="wrapper" data-aos="fade-up">
+      <h2>Top Rated</h2>
 
       <ul>
-        <li v-for="item in home.topRated" :key="item.id" data-aos="fade-left">
+        <li v-for="item in home.topRated" :key="item.id">
           <p>
             <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">{{
               item.webTitle
@@ -14,7 +14,7 @@
       </ul>
     </div>
 
-    <div class="wrapper">
+    <div class="wrapper" data-aos="fade-down">
       <table>
         <caption>
           Base currency:
@@ -28,11 +28,7 @@
           <th>Rate</th>
         </tr>
 
-        <tr
-          v-for="(item, index) in home.exchangeRates.rates"
-          :key="index"
-          data-aos="fade-right"
-        >
+        <tr v-for="(item, index) in home.exchangeRates.rates" :key="index">
           <td>{{ item[0] }}</td>
           <td>{{ item[1] }}</td>
         </tr>

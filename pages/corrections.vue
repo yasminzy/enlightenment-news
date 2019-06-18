@@ -1,5 +1,5 @@
 <template>
-  <article data-aos="fade">
+  <article>
     <h1>Submit a Request</h1>
 
     <form action="https://formspree.io/yzyusrina@ymail.com" method="POST">

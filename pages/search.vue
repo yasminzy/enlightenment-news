@@ -3,7 +3,7 @@
     <search-box />
 
     <div class="container">
-      <aside class="wrapper" data-aos="flip-down">
+      <aside class="wrapper" data-aos="fade">
         <div v-show="results.length">
           <p>
             Result articles related to <span>{{ query }}</span>
@@ -17,7 +17,7 @@
             v-for="item in results"
             :key="item.id"
             class="hvr hvr-shadow"
-            data-aos="flip-up"
+            data-aos="fade-down-right"
           >
             <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 

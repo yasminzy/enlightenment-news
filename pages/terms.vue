@@ -1,5 +1,5 @@
 <template>
-  <article data-aos="fade">
+  <article>
     <h1>Terms of Use</h1>
 
     <p>Updated on June 18, 2019</p>

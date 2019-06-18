@@ -2,7 +2,7 @@
   <div class="container">
     <article class="wrapper">
       <ul class="content">
-        <li v-for="item in content" :key="item.id" data-aos="flip-up">
+        <li v-for="item in content" :key="item.id" data-aos="fade-down-right">
           <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
           <h3>
@@ -42,9 +42,9 @@
       <search-box />
     </article>
 
-    <aside>
+    <aside data-aos="fade">
       <ul class="tags wrapper">
-        <li v-for="item in tags" :key="item.id" data-aos="flip-down">
+        <li v-for="item in tags" :key="item.id">
           <nuxt-link :to="{ name: 'tag-tag', params: { id: item.id } }">
             <small>#{{ item.webTitle }}</small>
           </nuxt-link>

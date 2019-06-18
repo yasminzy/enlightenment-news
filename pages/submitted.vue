@@ -1,5 +1,5 @@
 <template>
-  <article data-aos="fade">
+  <article>
     <h1>Corrections Submitted</h1>
 
     <p>Thank you. We will take your input into consideration.</p>

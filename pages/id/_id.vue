@@ -1,6 +1,6 @@
 <template>
   <article>
-    <header data-aos="flip-left">
+    <header data-aos="flip-up">
       <small>{{
         data.response.content.blocks.body[0].publishedDate | moment("calendar")
       }}</small>
@@ -11,21 +11,19 @@
     </header>
 
     <div
-      data-aos="fade"
       v-html="data.response.content.blocks.body[0].bodyHtml"
-    ></div>
+      data-aos="fade"
+      data-aos-delay="150"
+    >
+    </div>
 
-    <footer>
+    <footer data-aos="flip-down">
       <hr />
 
       <p>Related tags:</p>
 
       <ul class="content-tags">
-        <li
-          v-for="subitem in data.response.content.tags"
-          :key="subitem.id"
-          data-aos="flip-right"
-        >
+        <li v-for="subitem in data.response.content.tags" :key="subitem.id">
           <nuxt-link :to="{ name: 'tag-tag', params: { id: subitem.id } }">
             <small>#{{ subitem.webTitle }}</small>
           </nuxt-link>

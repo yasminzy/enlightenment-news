@@ -1,5 +1,5 @@
 <template>
-  <article data-aos="fade">
+  <article>
     <h1>We're hiring!</h1>
 
     <p>
@@ -17,10 +17,7 @@
         <h3>Qualifications</h3>
 
         <ul>
-          <li
-            v-for="(subitem, index) in vacancies[index].qualifications"
-            :key="index"
-          >
+          <li v-for="(subitem, index) in item.qualifications" :key="index">
             {{ subitem }}
           </li>
         </ul>
@@ -28,10 +25,7 @@
         <h3>Responsibilities</h3>
 
         <ul>
-          <li
-            v-for="(subitem, index) in vacancies[index].responsibilities"
-            :key="index"
-          >
+          <li v-for="(subitem, index) in item.responsibilities" :key="index">
             {{ subitem }}
           </li>
         </ul>

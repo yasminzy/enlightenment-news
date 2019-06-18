@@ -8,7 +8,7 @@
           >
 
           <ul>
-            <li v-for="(subitem, index) in toc[index].sublabel" :key="index">
+            <li v-for="(subitem, index) in item.sublabel" :key="index">
               <a :href="'#' + urlize(subitem)">{{ subitem }}</a>
             </li>
           </ul>
@@ -16,7 +16,7 @@
       </ul>
     </aside>
 
-    <article data-aos="fade">
+    <article>
       <h1>Privacy Policy</h1>
 
       <h2>Introduction</h2>

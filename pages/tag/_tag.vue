@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <aside class="wrapper" data-aos="flip-down">
+    <aside class="wrapper" data-aos="fade">
       <div>
         <p>
           Result articles related to
@@ -14,7 +14,7 @@
         <li
           v-for="item in data.response.results"
           :key="item.id"
-          data-aos="flip-up"
+          data-aos="fade-down-right"
         >
           <small>{{ item.webPublicationDate | moment("calendar") }}</small>
 
