@@ -1,5 +1,5 @@
 <template>
-  <div data-aos="fade">
+  <div data-aos="fade-up-right">
     <form>
       <input
         type="text"
@@ -15,13 +15,13 @@
         "
       >
         <button @click.prevent="$router.push('/search')">
-          <i class="icon ion-md-search"></i>
+          <ion-icon name="search" />
         </button>
       </div>
 
       <div v-else>
         <button @click.prevent="search">
-          <i class="icon ion-md-search"></i>
+          <ion-icon name="search" />
         </button>
       </div>
     </form>

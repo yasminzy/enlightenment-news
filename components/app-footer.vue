@@ -1,18 +1,18 @@
 <template>
   <footer>
-    <div class="wrapper">
+    <div class="wrapper" data-aos="fade-up-left">
       <div class="social" data-aos="fade-down-right">
         Follow Enlightenment:
         <ul>
           <li v-for="(item, index) in social" :key="index">
             <a :href="item.link">
-              <i :class="'icon ion-' + item.icon"></i>
+              <ion-icon :name="item.icon" />
             </a>
           </li>
         </ul>
       </div>
 
-      <p class="about" data-aos="fade-down-left">
+      <p class="about">
         Enlightenment, the news and media division of Sahab Enlightenment, is
         the world’s largest international multimedia news provider reaching more
         than one billion people every day. Enlightenment provides trusted
