@@ -1,21 +1,17 @@
 <template>
-  <section class="container wrapper">
+  <section class="container wrapper" data-aos="fade-right">
     <div v-for="(item, index) in sections" :key="index" class="wrapper">
       <header>
         <nuxt-link :to="'/' + item">
-          <h3 data-aos="fade">{{ item.toUpperCase() }}</h3>
-          <i class="icon ion-md-arrow-dropright"></i>
+          <h3>{{ item.toUpperCase() }}</h3>
+          <ion-icon name="arrow-dropright" />
         </nuxt-link>
       </header>
 
       <hr />
 
       <ul>
-        <li
-          v-for="subitem in home[item]"
-          :key="subitem.id"
-          data-aos="fade-up-left"
-        >
+        <li v-for="subitem in home[item]" :key="subitem.id">
           <nuxt-link :to="{ name: 'id-id', params: { id: subitem.id } }">
             <div class="img-wrapper">
               <img
@@ -37,7 +33,7 @@
 export default {
   data() {
     return {
-      sections: ["books", "music", "stage", "film", "games", "fashion"]
+      sections: ["games", "music", "science", "technology"]
     };
   },
   computed: {

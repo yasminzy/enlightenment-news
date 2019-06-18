@@ -1,18 +1,14 @@
 <template>
   <section>
-    <div class="container wrapper">
+    <div class="container wrapper" data-aos="fade-left">
       <div v-for="(item, index) in sections" :key="index" class="wrapper">
         <header>
           <nuxt-link :to="'/' + item">
-            <h2 data-aos="fade">{{ item.toUpperCase() }}</h2>
+            <h2>{{ item.toUpperCase() }}</h2>
           </nuxt-link>
         </header>
 
-        <div
-          v-for="subitem in home[item]"
-          :key="subitem.id"
-          data-aos="fade-up-right"
-        >
+        <div v-for="subitem in home[item]" :key="subitem.id">
           <nuxt-link :to="{ name: 'id-id', params: { id: subitem.id } }">
             <div
               :class="['bg', subitem.fields.thumbnail ? '' : 'dark']"
@@ -35,7 +31,7 @@
 export default {
   data() {
     return {
-      sections: ["world", "science", "technology", "business"]
+      sections: ["business", "fashion", "film", "food"]
     };
   },
   computed: {

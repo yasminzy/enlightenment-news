@@ -1,10 +1,10 @@
 <template>
   <nav id="top">
-    <div class="wrapper">
-      <h1 data-aos="fade"><nuxt-link to="/">ENLIGHTENMENT</nuxt-link></h1>
+    <div class="wrapper" data-aos="fade">
+      <h1><nuxt-link to="/">ENLIGHTENMENT</nuxt-link></h1>
 
       <ul class="categories">
-        <li v-for="(item, index) in categories" :key="index" data-aos="fade-up">
+        <li v-for="(item, index) in categories" :key="index">
           <nuxt-link :to="'/' + (item.to || urlize(item))">{{
             item.label || item
           }}</nuxt-link>
@@ -21,16 +21,15 @@ export default {
   data() {
     return {
       categories: [
-        "World",
+        "Business",
+        "Fashion",
+        "Film",
+        "Food",
+        "Games",
+        "Music",
         "Science",
         "Technology",
-        "Business",
-        "Books",
-        "Music",
-        "Film",
-        "Games",
-        "Stage",
-        "Fashion"
+        "World"
       ]
     };
   },
