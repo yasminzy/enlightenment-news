@@ -11,11 +11,10 @@
     </header>
 
     <div
-      v-html="data.response.content.blocks.body[0].bodyHtml"
       data-aos="fade"
       data-aos-delay="150"
-    >
-    </div>
+      v-html="data.response.content.blocks.body[0].bodyHtml"
+    ></div>
 
     <footer data-aos="flip-down">
       <hr />
