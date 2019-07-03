@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { urlize } from "~/assets/functions.js";
+import { urlize } from "@/assets/functions.js";
 
 export default {
   data() {

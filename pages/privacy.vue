@@ -892,8 +892,8 @@
 </template>
 
 <script>
-import Btt from "~/components/btt.vue";
-import { urlize } from "~/assets/functions.js";
+import Btt from "@/components/btt.vue";
+import { urlize } from "@/assets/functions.js";
 
 export default {
   components: {

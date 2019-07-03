@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import { urlize } from "~/assets/functions.js";
-import SearchBox from "~/components/search-box";
+import { urlize } from "@/assets/functions.js";
+import SearchBox from "@/components/search-box";
 
 export default {
   components: {

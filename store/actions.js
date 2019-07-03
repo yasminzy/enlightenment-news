@@ -5,7 +5,7 @@ import {
   getSectionContentUrl,
   getSectionTagsUrl,
   getSearchResultsUrl
-} from "~/assets/functions";
+} from "@/assets/functions";
 
 export default {
   async getLatestExchangeRate({ commit, dispatch }, options) {
