@@ -52,7 +52,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 form {
   display: grid;
   grid-template-columns: 5fr minmax(max-content, 1fr);

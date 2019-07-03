@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 nav {
   color: var(--white);
   background-color: var(--black);
