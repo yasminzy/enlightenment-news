@@ -75,15 +75,15 @@ export default {
 
 <style scoped>
 footer {
-  color: var(--grey-700);
   background-color: var(--grey-100);
+  color: var(--grey-700);
   margin-top: auto;
 }
 
 .wrapper {
   color: var(--grey-700);
   display: grid;
-  font-size: 0.9em;
+  font-size: 1rem;
   row-gap: calc(var(--space) / 2);
 }
 
