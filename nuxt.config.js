@@ -1,7 +1,7 @@
 export default {
   mode: "universal",
   head: {
-    title: process.env.npm_package_name || "Enlightenment News",
+    title: "Enlightenment News" || process.env.npm_package_name,
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -15,10 +15,17 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css?family=Roboto:400,700"
+        href:
+          "https://fonts.googleapis.com/css?family=Fira+Sans:400,700&display=swap"
       }
     ],
-    script: [{ src: "https://unpkg.com/ionicons/dist/ionicons.js", body: true }]
+    script: [
+      {
+        src: "https://unpkg.com/ionicons/dist/ionicons/ionicons.esm.js",
+        type: "module",
+        body: true
+      }
+    ]
   },
   loading: { color: "#Hex	3F51B5" },
   css: [

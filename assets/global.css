@@ -13,7 +13,7 @@ html {
 
 body {
   color: var(--black);
-  font-family: "Roboto", system-ui;
+  font-family: "Fira Sans", system-ui;
   line-height: 1.75;
   max-width: 100%;
   overflow-x: hidden;
