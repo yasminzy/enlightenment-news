@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="wrapper">
     <h1>We're hiring!</h1>
 
     <p>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { urlize } from "@/assets/functions.js";
+import { toKebabCase } from "~/assets/js/functions";
 
 export default {
   data() {
@@ -105,7 +105,7 @@ export default {
     };
   },
   methods: {
-    urlize
+    toKebabCase
   }
 };
 </script>
