@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <aside>
-      <ul>
-        <li v-for="item in toc" :key="item.label" data-aos="fade">
-          <a :href="'#' + urlize(item.label)" class="label">
+  <div class="div wrapper">
+    <aside class="aside">
+      <ul class="ul">
+        <li v-for="item in toc" :key="item.label" data-aos="fade-right">
+          <a :href="`#${toKebabCase(item.label)}`" class="label">
             {{ item.label }}</a
           >
 
-          <ul>
-            <li v-for="(subitem, index) in item.sublabel" :key="index">
-              <a :href="'#' + urlize(subitem)">{{ subitem }}</a>
+          <ul class="ul-2">
+            <li
+              v-for="(subitem, index) in item.sublabel"
+              :key="index"
+              class="li"
+            >
+              <a :href="`#${toKebabCase(subitem)}`" class="a">{{ subitem }}</a>
             </li>
           </ul>
         </li>
@@ -534,7 +538,7 @@
         PeopleMap, Public Records on Westlaw and CLEAR, please click here.
       </p>
 
-      <btt />
+      <BackToTop />
 
       <h2 id="cookies-and-similar-technologies">
         Cookies and similar technologies
@@ -714,7 +718,7 @@
         </li>
       </ul>
 
-      <btt />
+      <BackToTop />
 
       <h2 id="interest-based-advertising-iba">
         Interest-based advertising (IBA)
@@ -787,7 +791,7 @@
         based on your interests.
       </p>
 
-      <btt />
+      <BackToTop />
 
       <h2 id="do-not-track">Do not track</h2>
 
@@ -800,7 +804,7 @@
         as necessary.
       </p>
 
-      <btt />
+      <BackToTop />
 
       <h2 id="connecting-via-social-networks">
         Connecting via social networks
@@ -827,7 +831,7 @@
         sharing on the Services.
       </p>
 
-      <btt />
+      <BackToTop />
 
       <h2 id="links-and-connections-to-third-party-services">
         Links and connections to third-party services
@@ -845,7 +849,7 @@
         to these third-party services.
       </p>
 
-      <btt />
+      <BackToTop />
 
       <h2 id="childrens-privacy">Children’s privacy</h2>
 
@@ -857,7 +861,7 @@
         applicable laws.
       </p>
 
-      <btt />
+      <BackToTop />
 
       <h2 id="how-to-contact-us">How to contact us</h2>
 
@@ -886,18 +890,18 @@
         the relevant Service.
       </p>
 
-      <btt />
+      <BackToTop />
     </article>
   </div>
 </template>
 
 <script>
-import Btt from "@/components/btt.vue";
-import { urlize } from "@/assets/functions.js";
+import { toKebabCase } from "~/assets/js/functions";
+import BackToTop from "~/components/BackToTop";
 
 export default {
   components: {
-    Btt
+    BackToTop
   },
   data() {
     return {
@@ -946,13 +950,13 @@ export default {
     };
   },
   methods: {
-    urlize
+    toKebabCase
   }
 };
 </script>
 
-<style scoped>
-div {
+<style lang="postcss" scoped>
+.div {
   display: grid;
   gap: var(--space);
 
@@ -961,24 +965,24 @@ div {
   }
 }
 
-aside {
+.aside {
   display: none;
 
   @media (--md) {
     display: block;
   }
 
-  & ul {
+  & .ul {
     list-style-type: none;
     padding-left: 0;
 
-    & ul {
+    & .ul-2 {
       padding: calc(var(--space) / 2);
 
-      & li {
+      & .li {
         margin-bottom: calc(var(--space) / 2);
 
-        & a {
+        & .a {
           display: block;
         }
       }

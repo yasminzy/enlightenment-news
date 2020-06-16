@@ -1,36 +1,46 @@
 <template>
-  <section class="container wrapper">
-    <div class="wrapper" data-aos="fade-up">
+  <section class="container mh-100 wrapper">
+    <div v-if="home.topRated[0]" class="div wrapper">
       <h2>Top Rated</h2>
 
-      <ul>
-        <li v-for="item in home.topRated" :key="item.id">
+      <ul class="ul">
+        <li v-for="item in home.topRated" :key="item.id" class="li">
           <p>
-            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">{{
-              item.webTitle
-            }}</nuxt-link>
+            <nuxt-link :to="{ name: 'id', params: { id: item.id } }" class="a">
+              {{ item.webTitle }}
+            </nuxt-link>
           </p>
         </li>
       </ul>
     </div>
 
-    <div class="wrapper" data-aos="fade-down">
-      <table>
-        <caption>
+    <div v-else class="div wrapper" data-aos="fade-left">Loading...</div>
+
+    <div
+      v-show="home.exchangeRates.rates"
+      class="wrapper"
+      data-aos="fade-right"
+    >
+      <table class="table">
+        <caption class="caption">
           Base currency:
           {{
             home.exchangeRates.base
           }}
         </caption>
 
-        <tr>
+        <tr class="tr">
           <th>Currency</th>
           <th>Rate</th>
         </tr>
 
-        <tr v-for="(item, index) in home.exchangeRates.rates" :key="index">
-          <td>{{ item[0] }}</td>
-          <td>{{ item[1] }}</td>
+        <tr
+          v-for="(item, index) in home.exchangeRates.rates"
+          :key="index"
+          class="tr"
+        >
+          <td class="td">{{ item[0] }}</td>
+          <td class="td">{{ item[1] }}</td>
         </tr>
       </table>
     </div>
@@ -69,12 +79,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .container {
+  align-items: flex-start;
   display: grid;
-  gap: var(--space);
-  padding: 0;
-  padding: calc(var(--space) * 2) 0;
+  gap: calc(var(--space) / 2);
+  padding: calc(var(--space)) 0;
 
   @media (--md) {
     grid-template-columns: 2fr 1fr;
@@ -85,22 +95,22 @@ export default {
   }
 }
 
-.container > div {
+.container > .div {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: auto;
+  justify-content: center;
 }
 
-ul {
+.ul {
   list-style-type: none;
   padding-left: 0;
 }
 
-li {
-  & a {
-    color: var(--black);
+.li {
+  & .a {
+    color: var(--dark);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,32 +118,32 @@ li {
   }
 
   &:not(:first-child) {
-    border-top: 1px solid var(--grey);
+    border-top: 1px solid var(--dark);
   }
 }
 
-table {
+.table {
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 1rem;
   max-width: 100%;
-  text-align: center;
   overflow-x: auto;
-  width: 100%;
   padding: 1rem;
+  text-align: center;
+  width: 100%;
 }
 
-caption {
-  text-align-last: left;
+.caption {
   margin-bottom: 1rem;
+  text-align-last: left;
 }
 
-tr {
-  border-bottom: 1px solid var(--grey);
+.tr {
+  border-bottom: 1px solid var(--light);
 
   &:nth-child(odd) {
-    background-color: var(--grey-100);
+    background-color: var(--accent);
   }
 
   &:last-of-type {
@@ -141,7 +151,7 @@ tr {
   }
 }
 
-td {
+.td {
   padding: 0.75rem;
   vertical-align: top;
 

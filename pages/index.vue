@@ -1,17 +1,19 @@
 <template>
   <div>
-    <HomeTopRated />
-    <HomeFeaturedSimple />
-    <HomeFeatured />
-    <SearchBox class="wrapper" />
+    <client-only>
+      <HomeTopRated />
+      <HomeFeaturedSimple />
+      <HomeFeatured />
+      <SearchBox class="wrapper" />
+    </client-only>
   </div>
 </template>
 
 <script>
-import HomeTopRated from "@/components/home-top-rated";
-import HomeFeaturedSimple from "@/components/home-featured-simple";
-import HomeFeatured from "@/components/home-featured";
-import SearchBox from "@/components/search-box";
+import HomeFeatured from "~/components/HomeFeatured";
+import HomeFeaturedSimple from "~/components/HomeFeaturedSimple";
+import HomeTopRated from "~/components/HomeTopRated";
+import SearchBox from "~/components/SearchBox";
 
 export default {
   components: {
@@ -19,7 +21,6 @@ export default {
     HomeFeaturedSimple,
     HomeTopRated,
     SearchBox
-  },
-  layout: "home"
+  }
 };
 </script>

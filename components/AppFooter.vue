@@ -1,12 +1,12 @@
 <template>
-  <footer>
-    <div class="wrapper" data-aos="fade-up-left">
-      <div class="social" data-aos="fade-down-right">
+  <footer class="footer">
+    <div class="wrapper" data-aos="fade">
+      <div class="social">
         Follow Enlightenment:
-        <ul>
+        <ul class="ul">
           <li v-for="(item, index) in social" :key="index">
-            <a :href="item.link">
-              <ion-icon :name="item.icon" />
+            <a :href="item.link" class="a">
+              <component :is="item.icon" />
             </a>
           </li>
         </ul>
@@ -21,11 +21,11 @@
         directly to consumers at Enlightenment.com and via Enlightenment TV.
       </p>
 
-      <ul class="links">
-        <li>&copy; 2018-2019 Enlightenment</li>
+      <ul class="links ul">
+        <li class="li">&copy; 2018-2020 Enlightenment</li>
 
         <li v-for="(item, index) in links" :key="index">
-          <nuxt-link :to="'/' + item.link">
+          <nuxt-link :to="`/${item.link}`" class="a">
             <p v-html="item.text"></p>
           </nuxt-link>
         </li>
@@ -35,32 +35,44 @@
 </template>
 
 <script>
-import { urlize } from "@/assets/functions.js";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TwitterIcon,
+  YoutubeIcon
+} from "vue-feather-icons";
+import { toKebabCase } from "~/assets/js/functions";
 
 export default {
+  components: {
+    FacebookIcon,
+    InstagramIcon,
+    TwitterIcon,
+    YoutubeIcon
+  },
   data() {
     return {
       social: [
         {
-          icon: "logo-facebook",
+          icon: "FacebookIcon",
           link: "hhttps://www.facebook.com"
         },
         {
-          icon: "logo-instagram",
+          icon: "InstagramIcon",
           link: "https://www.instagram.com"
         },
         {
-          icon: "logo-twitter",
+          icon: "TwitterIcon",
           link: "https://twitter.com"
         },
         {
-          icon: "logo-youtube",
+          icon: "YoutubeIcon",
           link: "https://www.youtube.com"
         }
       ],
       links: [
         { link: "corrections", text: "Corrections" },
-        { link: "advertising-guidelines", text: "Advertising Guidelines" },
+        { link: "guidelines", text: "Advertising Guidelines" },
         { link: "careers", text: "Careers" },
         { link: "terms", text: "Terms of Use" },
         { link: "privacy", text: "Privacy Policy" }
@@ -68,64 +80,61 @@ export default {
     };
   },
   methods: {
-    urlize
+    toKebabCase
   }
 };
 </script>
 
-<style scoped>
-footer {
-  background-color: var(--grey-100);
-  color: var(--grey-700);
+<style lang="postcss" scoped>
+.footer {
+  background-color: var(--dark);
+  color: var(--light);
   margin-top: auto;
 }
 
 .wrapper {
-  color: var(--grey-700);
   display: grid;
   font-size: 1rem;
   row-gap: calc(var(--space) / 2);
 }
 
-ul {
+.social {
+  align-items: center;
+  display: flex;
+
+  & .a {
+    padding: 0 0.5rem;
+  }
+}
+
+.ul {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
   padding-left: 0;
 }
 
-li a {
-  color: var(--grey-700);
+.a {
   display: block;
-}
-
-.social {
-  display: flex;
-  align-items: center;
-
-  & li {
-    & a {
-      padding: 0.5rem 1rem;
-    }
-  }
+  color: var(--accent);
 }
 
 .links {
-  font-size: 0.9em;
-  padding: 0.5rem 0;
-  display: grid;
   column-gap: var(--space);
-  row-gap: calc(var(--space) / 3);
+  display: grid;
+  font-size: 0.9em;
   grid-template-columns: minmax(max-content, 1fr) 1fr;
-
-  & li {
-    @media (--sm) {
-      margin-right: 1rem;
-    }
-  }
+  padding: 0.5rem 0;
+  row-gap: calc(var(--space) / 3);
 
   @media (--md) {
     display: flex;
+  }
+
+  & .li {
+    @media (--sm) {
+      margin-right: 1rem;
+    }
   }
 }
 </style>

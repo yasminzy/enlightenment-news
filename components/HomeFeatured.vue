@@ -1,27 +1,37 @@
 <template>
-  <section class="container wrapper" data-aos="fade-right">
-    <div v-for="(item, index) in sections" :key="index" class="wrapper">
+  <section class="container wrapper">
+    <div
+      v-for="(item, index) in sections"
+      v-show="home[sections[0]]"
+      :key="index"
+      class="wrapper"
+      data-aos="fade-right"
+    >
       <header>
-        <nuxt-link :to="'/' + item">
+        <nuxt-link
+          :to="{ name: 'section', params: { section: item } }"
+          class="a header-a"
+        >
           <h3>{{ item.toUpperCase() }}</h3>
-          <ion-icon name="arrow-dropright" />
+
+          <ChevronRightIcon />
         </nuxt-link>
       </header>
 
-      <hr />
+      <hr class="hr" />
 
-      <ul>
-        <li v-for="subitem in home[item]" :key="subitem.id">
-          <nuxt-link :to="{ name: 'id-id', params: { id: subitem.id } }">
+      <ul class="ul">
+        <li v-for="subitem in home[item]" :key="subitem.id" class="li">
+          <nuxt-link :to="{ name: 'id', params: { id: subitem.id } }" class="a">
             <div class="img-wrapper">
               <img
                 v-lazy="subitem.fields.thumbnail"
                 :alt="subitem.webTitle"
-                class="hvr hvr-grow"
+                class="hvr hvr-grow img"
               />
             </div>
 
-            <h4>{{ subitem.webTitle }}</h4>
+            <h4 class="h4">{{ subitem.webTitle }}</h4>
           </nuxt-link>
         </li>
       </ul>
@@ -30,7 +40,12 @@
 </template>
 
 <script>
+import { ChevronRightIcon } from "vue-feather-icons";
+
 export default {
+  components: {
+    ChevronRightIcon
+  },
   data() {
     return {
       sections: ["games", "music", "science", "technology"]
@@ -54,7 +69,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .container {
   display: grid;
   gap: var(--space);
@@ -68,54 +83,50 @@ export default {
   }
 }
 
-header a {
+.a {
+  color: var(--dark);
+}
+
+.header-a {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-i {
-  margin-bottom: 0.75rem;
+.hr {
+  border-color: var(--accent);
 }
 
-a {
-  color: var(--black);
-}
-
-hr {
-  border-color: var(--primary);
-}
-
-ul {
+.ul {
   list-style-type: none;
   padding-left: 0;
 }
 
-li {
-  & a {
+.li {
+  & .a {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: calc(var(--space) / 2) var(--space);
   }
 
-  & h4 {
-    font-size: 1.25rem;
-    margin: 0;
+  & .img {
+    margin-bottom: calc(var(--space) / 2);
   }
 
-  & img {
-    margin-bottom: calc(var(--space) / 2);
+  & .h4 {
+    font-size: 1.25rem;
+    margin: 0;
   }
 
   &:not(:first-child) {
     border-top: 1px solid var(--grey);
 
-    & img {
+    & .img {
       display: none;
     }
 
-    & h4 {
+    & .h4 {
       font-size: 1rem;
     }
   }

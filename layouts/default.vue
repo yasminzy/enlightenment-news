@@ -1,14 +1,14 @@
 <template>
-  <div class="container mh-100">
+  <div class="container">
     <AppNav />
-    <nuxt class="wrapper" />
+    <nuxt class="mh-100" />
     <AppFooter />
   </div>
 </template>
 
 <script>
-import AppNav from "@/components/app-nav.vue";
-import AppFooter from "@/components/app-footer.vue";
+import AppNav from "~/components/AppNav";
+import AppFooter from "~/components/AppFooter";
 
 export default {
   components: {
@@ -17,13 +17,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-body {
-  overflow-x: hidden;
-}
-
-.mh-100 {
-  min-height: 100vh;
-}
-</style>
