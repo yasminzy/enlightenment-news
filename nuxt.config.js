@@ -43,15 +43,11 @@ export default {
       plugins: {
         "postcss-import": {},
         "postcss-preset-env": {
-          stage: 0,
+          stage: 1,
           importFrom: "./assets/css/variables.css"
         },
         "rucksack-css": {}
       }
     }
-  },
-  env: {
-    VUE_APP_FIXER_API_KEY: process.env.VUE_APP_FIXER_API_KEY,
-    VUE_APP_GUARDIAN_API_KEY: process.env.VUE_APP_GUARDIAN_API_KEY
   }
 };
