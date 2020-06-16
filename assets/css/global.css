@@ -4,6 +4,11 @@ html {
   box-sizing: border-box;
 }
 
+::selection {
+  background-color: var(--accent);
+  color: var(--dark);
+}
+
 *,
 *:before,
 *:after {
@@ -12,13 +17,13 @@ html {
 }
 
 body {
-  color: var(--black);
+  color: var(--dark);
   font-family: "Fira Sans", system-ui;
+  font-size: responsive;
   line-height: 1.75;
   max-width: 100%;
-  overflow-x: hidden;
   overflow-wrap: break-word;
-  font-size: responsive;
+  overflow-x: hidden;
 
   @media (--sm) {
     font-size: 1rem;
@@ -27,7 +32,7 @@ body {
 
 hr {
   outline: 0;
-  border: 1px solid var(--grey-100);
+  border: 1px solid var(--dark);
 }
 
 a,
@@ -38,7 +43,7 @@ button {
 }
 
 a {
-  color: var(--primary);
+  color: var(--accent-2);
   text-decoration: none;
 }
 
@@ -109,7 +114,6 @@ video {
 }
 
 figcaption {
-  color: var(--grey);
   font-size: 0.9em;
   margin-bottom: calc(var(--space) / 2);
   text-align: center;
@@ -120,15 +124,43 @@ figcaption {
   flex-direction: column;
 }
 
+.img-wrapper {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.mh-100 {
+  min-height: 100vh;
+}
+
+.posts-container {
+  display: grid;
+  gap: var(--space);
+
+  @media (--md) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  @media (--xl) {
+    column-gap: calc(var(--space) * 2);
+  }
+
+  & .content {
+    display: grid;
+    list-style-type: none;
+    padding-left: 0;
+    row-gap: var(--space);
+
+    @media (--sm) {
+      row-gap: calc(var(--space) * 2);
+    }
+  }
+}
+
 .wrapper {
   max-width: 992px;
   padding: calc(var(--space) / 2);
   margin: 0 auto;
-}
-
-.img-wrapper {
-  display: inline-block;
-  overflow: hidden;
 }
 
 /* https://github.com/IanLunn/Hover */
