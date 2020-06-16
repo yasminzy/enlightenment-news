@@ -1,14 +1,14 @@
 export default {
   mode: "universal",
   head: {
-    title: "Enlightenment News" || process.env.npm_package_name,
+    title: "Enlightenment News",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: process.env.npm_package_description || ""
+        content: "News site consuming Guardian API"
       }
     ],
     link: [
@@ -16,28 +16,21 @@ export default {
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css?family=Fira+Sans:400,700&display=swap"
-      }
-    ],
-    script: [
-      {
-        src: "https://unpkg.com/ionicons/dist/ionicons/ionicons.esm.js",
-        type: "module",
-        body: true
+          "https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
       }
     ]
   },
-  loading: { color: "#Hex	3F51B5" },
+  loading: { color: "#ffcdb2" },
   css: [
     "normalize.css/normalize.css",
     "aos/dist/aos.css",
-    "@/assets/global.css"
+    "./assets/css/global.css"
   ],
   plugins: [
-    "@/plugins/vue-lazyload",
-    "@/plugins/vue-moment",
-    "@/plugins/vuex-router-sync",
-    { src: "@/plugins/aos", ssr: false }
+    "./plugins/aos.client",
+    "./plugins/vue-lazyload",
+    "./plugins/vue-moment",
+    "./plugins/vuex-router-sync"
   ],
   modules: ["@nuxtjs/axios", "@nuxtjs/dotenv"],
   build: {
@@ -51,16 +44,10 @@ export default {
         "postcss-import": {},
         "postcss-preset-env": {
           stage: 0,
-          importFrom: "./assets/variables.css"
+          importFrom: "./assets/css/variables.css"
         },
         "rucksack-css": {}
       }
-    },
-    extend(config, ctx) {}
-  },
-  router: {
-    scrollBehavior: function() {
-      return { x: 0, y: 0 };
     }
   },
   env: {
