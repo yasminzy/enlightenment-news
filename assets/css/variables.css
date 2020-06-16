@@ -1,20 +1,18 @@
 :root {
   /* Color palette */
   --apricot: #ffcdb2;
-  --melon: #ffb4a2;
-  --pastel-pink: #e5989b;
   --english-lavender: #b5838d;
+  --melon: #ffb4a2;
   --old-lavender: #6d6875;
+  --pastel-pink: #e5989b;
 
   /* Project */
   --accent: var(--apricot);
   --accent-2: var(--english-lavender);
   --dark: var(--old-lavender);
   --light: #fff;
-  --radius: var(--space);
   --shadow: 0 5px 5px rgba(33, 33, 33, 0.25);
   --space: 2rem;
-  --btn-padding: calc(var(--space) / 3) calc(var(--space));
 }
 
 /* Breakpoints */
