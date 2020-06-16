@@ -1,24 +1,30 @@
 import {
-  getLatestExchangeRateUrl,
-  getHomeTopRatedContentUrl,
   getHomeContentUrl,
+  getHomeTopRatedContentUrl,
+  getLatestExchangeRateUrl,
+  getSearchResultsUrl,
   getSectionContentUrl,
-  getSectionTagsUrl,
-  getSearchResultsUrl
-} from "@/assets/functions";
+  getSectionTagsUrl
+} from "~/assets/js/functions";
+
+const config = {
+  headers: {
+    "Access-Control-Allow-Origin": "*"
+  }
+};
 
 export const state = () => ({
   home: {
-    exchangeRates: [],
-    topRated: [],
     business: [],
+    exchangeRates: [],
     fashion: [],
     film: [],
     food: [],
     games: [],
     music: [],
     science: [],
-    technology: []
+    technology: [],
+    topRated: []
   },
   content: {
     business: [],
@@ -48,59 +54,23 @@ export const state = () => ({
   }
 });
 
-export const actions = {
-  async getLatestExchangeRate({ commit, dispatch }, options) {
-    await dispatch("getHomeTopRatedContent");
-
-    const response = await this.$axios.$get(getLatestExchangeRateUrl(options));
-    const content = {
-      base: response.base,
-      rates: Object.entries(response.rates)
-    };
-    commit("exchangeRates", content);
+export const getters = {
+  home(state) {
+    return state.home;
   },
-
-  async getHomeTopRatedContent({ commit }) {
-    const response = await this.$axios.$get(getHomeTopRatedContentUrl());
-    const content = response.response.results;
-    commit("homeTopRated", content);
+  content(state) {
+    const route = state.route.path.replace("/", "");
+    return state.content[route];
   },
-
-  async getHomeContent({ commit }, arg) {
-    const response = await this.$axios.$get(
-      getHomeContentUrl(arg.section, arg.size)
-    );
-    const data = {
-      content: response.response.results,
-      section: arg.section
-    };
-    commit("home", data);
+  tags(state) {
+    const route = state.route.path.replace("/", "");
+    return state.tags[route];
   },
-
-  async getSectionContent({ commit, dispatch }, section) {
-    await dispatch("getSectionTags", section);
-
-    const response = await this.$axios.$get(getSectionContentUrl(section));
-    const data = {
-      content: response.response.results,
-      section
-    };
-    commit("content", data);
+  searchQuery(state) {
+    return state.search.query;
   },
-
-  async getSectionTags({ commit }, section) {
-    const response = await this.$axios.$get(getSectionTagsUrl(section));
-    const data = {
-      content: response.response.results,
-      section
-    };
-    commit("tags", data);
-  },
-
-  async getSearchResults({ commit }, query) {
-    const response = await this.$axios.$get(getSearchResultsUrl(query));
-    const content = response.response.results;
-    commit("searchResults", content);
+  searchResults(state) {
+    return state.search.results;
   }
 };
 
@@ -128,22 +98,65 @@ export const mutations = {
   }
 };
 
-export const getters = {
-  home(state) {
-    return state.home;
+export const actions = {
+  async getHomeContent({ commit }, arg) {
+    const response = await this.$axios.$get(
+      getHomeContentUrl(arg.section, arg.size),
+      config
+    );
+    const data = {
+      content: response.response.results,
+      section: arg.section
+    };
+    commit("home", data);
   },
-  content(state) {
-    const route = state.route.path.replace("/", "");
-    return state.content[route];
+
+  async getHomeTopRatedContent({ commit }) {
+    const response = await this.$axios.$get(
+      getHomeTopRatedContentUrl(),
+      config
+    );
+    const content = response.response.results;
+    commit("homeTopRated", content);
   },
-  tags(state) {
-    const route = state.route.path.replace("/", "");
-    return state.tags[route];
+
+  async getLatestExchangeRate({ commit, dispatch }, options) {
+    await dispatch("getHomeTopRatedContent");
+
+    const response = await this.$axios.$get(getLatestExchangeRateUrl(options));
+    const content = {
+      base: response.base,
+      rates: Object.entries(response.rates)
+    };
+    commit("exchangeRates", content);
   },
-  searchQuery(state) {
-    return state.search.query;
+
+  async getSearchResults({ commit }, query) {
+    const response = await this.$axios.$get(getSearchResultsUrl(query), config);
+    const content = response.response.results;
+    commit("searchResults", content);
   },
-  searchResults(state) {
-    return state.search.results;
+
+  async getSectionContent({ commit, dispatch }, section) {
+    await dispatch("getSectionTags", section);
+
+    const response = await this.$axios.$get(
+      getSectionContentUrl(section),
+      config
+    );
+    const data = {
+      content: response.response.results,
+      section
+    };
+    commit("content", data);
+  },
+
+  async getSectionTags({ commit }, section) {
+    const response = await this.$axios.$get(getSectionTagsUrl(section), config);
+    const data = {
+      content: response.response.results,
+      section
+    };
+    commit("tags", data);
   }
 };
