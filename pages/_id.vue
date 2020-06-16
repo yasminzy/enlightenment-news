@@ -1,29 +1,25 @@
 <template>
-  <article>
-    <header data-aos="flip-up">
+  <article v-if="data.response.content" class="article wrapper">
+    <header>
       <small>{{
         data.response.content.blocks.body[0].publishedDate | moment("calendar")
       }}</small>
 
       <h1>{{ data.response.content.webTitle }}</h1>
 
-      <hr />
+      <hr class="hr" />
     </header>
 
-    <div
-      data-aos="fade"
-      data-aos-delay="150"
-      v-html="data.response.content.blocks.body[0].bodyHtml"
-    ></div>
+    <div class="div" v-html="data.response.content.blocks.body[0].bodyHtml" />
 
-    <footer data-aos="flip-down">
-      <hr />
+    <footer>
+      <hr class="hr" />
 
       <p>Related tags:</p>
 
       <ul class="content-tags">
         <li v-for="subitem in data.response.content.tags" :key="subitem.id">
-          <nuxt-link :to="{ name: 'tag-tag', params: { id: subitem.id } }">
+          <nuxt-link :to="{ name: 'tag', params: { tag: subitem.id } }">
             <small>#{{ subitem.webTitle }}</small>
           </nuxt-link>
         </li>
@@ -39,27 +35,37 @@ export default {
   async asyncData({ params }) {
     // Get the article content based on the url
     const { data } = await axios.get(
-      `https://content.guardianapis.com/${params.id}?show-blocks=body&show-tags=all&api-key=${process.env.VUE_APP_GUARDIAN_API_KEY}`
+      `https://content.guardianapis.com/${params.id}?show-blocks=body&show-tags=all&api-key=${process.env.NUXT_ENV_GUARDIAN_API_KEY}`
     );
     return { data };
+  },
+  created() {
+    if (!this.data.response.content) {
+      const route = this.$store.state.route.path.replace("/", "");
+
+      this.$router.push({
+        name: "section",
+        params: { section: route }
+      });
+    }
   }
 };
 </script>
 
-<style scoped>
-article {
+<style lang="postcss" scoped>
+.article {
   padding: calc(var(--space) * 2) var(--space);
 }
 
-hr,
+.hr,
 figcaption,
-div {
+.div {
   margin-bottom: var(--space);
 }
 
 .content-tags {
-  display: grid;
   column-gap: calc(var(--space) / 2);
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   list-style-type: none;
   padding-left: 0;

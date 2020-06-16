@@ -1,44 +1,28 @@
 <template>
-  <div>
-    <search-box />
+  <div class="div wrapper">
+    <SearchBox />
 
-    <div class="container">
-      <aside class="wrapper" data-aos="fade">
+    <div class="mh-100 posts-container">
+      <aside class="aside wrapper" data-aos="fade">
         <div v-show="results.length">
           <p>
-            Result articles related to <span>{{ query }}</span>
+            Result articles related to <span class="span">{{ query }}</span>
           </p>
         </div>
       </aside>
 
       <article class="wrapper">
         <ul class="content">
-          <li
+          <PostListItem
             v-for="item in results"
             :key="item.id"
-            class="hvr hvr-shadow"
-            data-aos="fade-down-right"
-          >
-            <small>{{ item.webPublicationDate | moment("calendar") }}</small>
-
-            <h3>
-              <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
-                {{ item.webTitle }}
-              </nuxt-link>
-            </h3>
-
-            <div class="img-wrapper">
-              <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
-                <img
-                  v-lazy="item.fields.thumbnail"
-                  :alt="item.webTitle"
-                  class="hvr hvr-grow"
-                />
-              </nuxt-link>
-            </div>
-
-            <p v-html="item.fields.trailText"></p>
-          </li>
+            :date="item.webPublicationDate"
+            :identifier="item.id"
+            :img="item.fields.thumbnail"
+            :tags="item.tags"
+            :title="item.webTitle"
+            :trail-text="item.fields.trailText"
+          />
         </ul>
       </article>
     </div>
@@ -46,11 +30,13 @@
 </template>
 
 <script>
-import { urlize } from "@/assets/functions.js";
-import SearchBox from "@/components/search-box";
+import { toKebabCase } from "~/assets/js/functions";
+import PostListItem from "~/components/PostListItem";
+import SearchBox from "~/components/SearchBox";
 
 export default {
   components: {
+    PostListItem,
     SearchBox
   },
   computed: {
@@ -68,70 +54,32 @@ export default {
   },
   methods: {
     search() {
-      const query = urlize(this.query);
+      const query = toKebabCase(this.query);
       if (query) {
         this.$store.dispatch("getSearchResults", query);
       }
     },
-    urlize
+    toKebabCase
   }
 };
 </script>
 
-<style scoped>
-.container {
-  display: grid;
-  gap: var(--space);
-  min-height: 100vh;
+<style lang="postcss" scoped>
+.div {
+  @media (min-width: 992px) {
+    width: 992px;
+  }
+}
+
+.aside {
+  width: 100%;
 
   @media (--md) {
-    grid-template-columns: 2fr 1fr;
-
-    & aside {
-      order: 1;
-    }
-  }
-
-  @media (--xl) {
-    column-gap: calc(var(--space) * 2);
+    order: 1;
   }
 }
 
-.content {
-  display: grid;
-  row-gap: var(--space);
-  list-style-type: none;
-  padding-left: 0;
-
-  & > li {
-    box-shadow: var(--shadow);
-    width: 100%;
-    padding: var(--space);
-
-    & a {
-      color: var(--black);
-      display: block;
-    }
-  }
-
-  @media (--sm) {
-    row-gap: calc(var(--space) * 2);
-  }
-}
-
-aside {
-  width: 100%;
-}
-
-span {
+.span {
   font-weight: bold;
-}
-
-h3 {
-  margin-top: 0;
-}
-
-img {
-  margin: calc(var(--space) / 2) auto;
 }
 </style>

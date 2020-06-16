@@ -1,51 +1,29 @@
 <template>
-  <div class="container">
+  <div class="posts-container wrapper">
     <article class="wrapper">
-      <ul class="content">
-        <li v-for="item in content" :key="item.id" data-aos="fade-down-right">
-          <small>{{ item.webPublicationDate | moment("calendar") }}</small>
-
-          <h3>
-            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">{{
-              item.webTitle
-            }}</nuxt-link>
-          </h3>
-
-          <div class="img-wrapper">
-            <nuxt-link :to="{ name: 'id-id', params: { id: item.id } }">
-              <img
-                v-lazy="item.fields.thumbnail"
-                :alt="item.webTitle"
-                class="hvr hvr-grow"
-              />
-            </nuxt-link>
-          </div>
-
-          <p v-html="item.fields.trailText"></p>
-
-          <details>
-            <summary>Tags</summary>
-
-            <ul class="content-tags">
-              <li v-for="subitem in item.tags" :key="subitem.id">
-                <nuxt-link
-                  :to="{ name: 'tag-tag', params: { id: subitem.id } }"
-                >
-                  <small>#{{ subitem.webTitle }}</small>
-                </nuxt-link>
-              </li>
-            </ul>
-          </details>
-        </li>
+      <ul class="content mh-100">
+        <PostListItem
+          v-for="item in content"
+          :key="item.id"
+          :date="item.webPublicationDate"
+          :identifier="item.id"
+          :img="item.fields.thumbnail"
+          :tags="item.tags"
+          :title="item.webTitle"
+          :trail-text="item.fields.trailText"
+        />
       </ul>
 
-      <search-box />
+      <SearchBox />
     </article>
 
     <aside data-aos="fade">
       <ul class="tags wrapper">
-        <li v-for="item in tags" :key="item.id">
-          <nuxt-link :to="{ name: 'tag-tag', params: { id: item.id } }">
+        <li v-for="item in tags" :key="item.id" class="tags-li">
+          <nuxt-link
+            :to="{ name: 'tag', params: { tag: item.id } }"
+            class="tags-a"
+          >
             <small>#{{ item.webTitle }}</small>
           </nuxt-link>
         </li>
@@ -55,10 +33,12 @@
 </template>
 
 <script>
-import SearchBox from "@/components/search-box";
+import PostListItem from "~/components/PostListItem";
+import SearchBox from "~/components/SearchBox";
 
 export default {
   components: {
+    PostListItem,
     SearchBox
   },
   computed: {
@@ -71,91 +51,51 @@ export default {
   },
   async created() {
     // Get articles related to the selected section
-    const route = this.$store.state.route.path.replace("/", "");
-    await this.$store.dispatch("getSectionContent", route);
+    let route = this.$store.state.route.path.replace("/", "");
+
+    if (!route.includes("%")) {
+      await this.$store.dispatch("getSectionContent", route);
+    } else {
+      route = route.replace(/%252F/g, "/");
+
+      this.$router.push({
+        name: "tag",
+        params: { tag: route }
+      });
+    }
   }
 };
 </script>
 
-<style scoped>
-.container {
-  display: grid;
-  gap: var(--space);
-
-  @media (--md) {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  @media (--xl) {
-    column-gap: calc(var(--space) * 2);
-  }
-}
-
-.content,
-.content-tags,
-.tags {
-  list-style-type: none;
-  padding-left: 0;
-}
-
+<style lang="postcss" scoped>
 .content {
-  display: grid;
-  row-gap: var(--space);
-  min-height: 100vh;
-
   @media (--sm) {
-    grid-template-columns: 1fr 1fr;
     column-gap: var(--space);
+    grid-template-columns: 1fr 1fr;
   }
 
   @media (--md) {
     grid-template-columns: 1fr;
   }
 
-  & > li {
+  & > .li {
     box-shadow: var(--shadow);
-    width: 100%;
     padding: var(--space);
-
-    & a {
-      color: var(--black);
-      display: block;
-    }
+    width: 100%;
   }
-
-  @media (--sm) {
-    row-gap: calc(var(--space) * 2);
-  }
-}
-
-h3 {
-  margin-top: 0;
-}
-
-img {
-  margin: calc(var(--space) / 2) auto;
-}
-
-.content-tags {
-  display: grid;
-  column-gap: calc(var(--space) / 3);
-  grid-template-columns: repeat(3, 1fr);
-}
-
-summary {
-  cursor: pointer;
-  outline: none;
 }
 
 .tags {
+  list-style-type: none;
+  padding-left: 0;
   text-align: center;
 
-  & li:not(:last-child) {
+  & .tags-li:not(:last-child) {
     margin-bottom: var(--space);
   }
 
-  & a {
-    color: var(--black);
+  & .tags-a {
+    color: var(--dark);
     display: block;
   }
 
