@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="wrapper">
     <h1>Advertising Guidelines</h1>
 
     <p>
