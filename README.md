@@ -4,9 +4,9 @@
 
 ## 🙋‍♀️ Introduction
 
-This is a sample news website I build with [Nuxt](https://nuxtjs.org/) and host at [Netlify 💖](https://www.netlify.com/). I use [Vuex]() to get news from [The Guardian](https://open-platform.theguardian.com). As a little touch, I also include exchange rates for some currencies from [Exchange Rates](https://exchangeratesapi.io/).
+This is a sample news website I build with [Nuxt](https://nuxtjs.org/) and host at [Netlify](https://www.netlify.com/)💖. I use [Vuex]() to get news from [The Guardian](https://open-platform.theguardian.com). As a little touch, I also include exchange rates for some currencies from [Exchange Rates](https://exchangeratesapi.io/).
 
-For the styling, I only use [normalize.css](https://necolas.github.io/normalize.css/) as the base and write custom CSS with [PostCSS](https://postcss.org/) plugins. I use [AOS](https://michalsnik.github.io/aos/) and [Feather Icons](https://feathericons.com/) for the animation and icon pack, respectively. Furthermore, I lazyload images with [Lazyload](http://hilongjw.github.io/vue-lazyload/) and use [Moment](http://www.momentjs.com/) for time formatting.
+For the styling, I only use [normalize.css](https://necolas.github.io/normalize.css/) as the base and write custom CSS with [PostCSS](https://postcss.org/) plugins. I use [AOS](https://michalsnik.github.io/aos/) and [Feather Icons](https://feathericons.com/) for the animation and icon pack, respectively. Furthermore, I lazyload images with [Lazyload](http://hilongjw.github.io/vue-lazyload/) and use [Moment](http://www.momentjs.com/) for time formatting. Last but not least, I use [Nuxt Interpolation](https://github.com/daliborgogic/nuxt-interpolation) to make relative links rendered with `v-html` use the router.
 
 This is meant as a demonstration of how to use the building blocks above. Enjoy! 😄
 
@@ -123,47 +123,68 @@ That is why I write some scripts for the fallback. The order is:
 2. `_section`
 3. `_tag`
 
-In `/pages/_id.vue`, check if we have the data for an article. If not, go to the route named `section`.
+In `/pages/_id.vue`, check if we have the data for an article. If not, go to the route named `section` or redirect to the original The Guardian page. We need to do redirect if we happen to click a link to a commercial article. I use the free developer key which has some access limitation.
 
 ```js
 created() {
-  if (!this.data.response.content) {
-    const route = this.$store.state.route.path.replace("/", "");
+    let route = this.$store.state.route.path.replace("/", "");
 
-    this.$router.push({
-      name: "section",
-      params: { section: route }
-    });
+    // If the data is not undefined,
+    if (typeof this.data !== "undefined") {
+      // but we do not have the article content,
+      if (!this.data.response.content) {
+        // go to the _section page
+        this.$router.push({
+          name: "section",
+          params: { section: route }
+        });
+      }
+    }
+    // If the data is undefined because the content is commercial,
+    else if (process.client) {
+      // fix the route
+      route = route.replace(/%2F/g, "/");
+
+      // then go to the real page
+      window.location.href = `https://www.theguardian.com/${route}`;
+    }
   }
-}
 ```
 
 In `/pages/_section.vue`, check if we have the data for a category page. If not, go to the route named `tag`.
 
 ```js
 async created() {
-  let route = this.$store.state.route.path.replace("/", "");
+    // Get articles related to the selected section
+    let route = this.$store.state.route.path.replace("/", "");
 
-  if (!route.includes("%")) {
-    await this.$store.dispatch("getSectionContent", route);
-  } else {
-    route = route.replace(/%252F/g, "/");
+    // If the route does not have a % symbol,
+    if (!route.includes("%")) {
+      // get the content for this section
+      await this.$store.dispatch("getSectionContent", route);
+    }
+    // If the route has that symbol, but it is not a link to an article,
+    else {
+      // fix the route
+      route = route.replace(/%252F/g, "/");
 
-    this.$router.push({
-      name: "tag",
-      params: { tag: route }
-    });
+      // then go to the _tag page
+      this.$router.push({
+        name: "tag",
+        params: { tag: route }
+      });
+    }
   }
-}
 ```
 
 We can organize the pages differently so Nuxt can distinguish the pages easily in the first place, but I choose to do it like this because I want to match the URL like it is in the Guardian site.
 
 ### `/plugins/`
 
-I have 4 `.js` files for the plugins I use:
+I use 5 `.js` plugins:
 
 - `aos.client` for the initiating animation from AOS. The `.client` suffix means `ssr: false` in `/nuxt.config.js`.
+- `nuxt-interpolation.client` to use `nuxt-link` instead of `a` when using `v-html`. The original module does not provide options so I just copy and tweak it a bit before registering it as a plugin.
 - `vue-lazyload` for using VueLazyload to lazyload images.
 - `vue-moment` for using Vue Moment to format the time.
 - `vuex-router-sync` for syncing the store and router.
@@ -192,7 +213,7 @@ const config = {
 };
 ```
 
-3. `state`: I structure this in a way that helps me get the data easily. Everything except the article and tag search data is stored here. Those two can be anything so I choose to make them manage their own data.
+3. `state`: I structure this in a way that helps me get the data easily. Everything except the article and tag search data is stored here. Those two can be anything so I choose to make them manage their data.
 
 ```js
 export const state = () => ({
