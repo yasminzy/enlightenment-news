@@ -58,7 +58,7 @@ export default {
       // get the content for this section
       await this.$store.dispatch("getSectionContent", route);
     }
-    // If the route has it, but it is not a link to an article,
+    // If the route has that symbol, but it is not a link to an article,
     else {
       // fix the route
       route = route.replace(/%252F/g, "/");
