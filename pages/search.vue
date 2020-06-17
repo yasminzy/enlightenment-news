@@ -2,12 +2,16 @@
   <div class="div wrapper">
     <SearchBox />
 
-    <div class="mh-100 posts-container">
+    <div class="posts-container">
       <aside class="aside wrapper" data-aos="fade">
-        <div v-show="results.length">
+        <div v-if="results.length">
           <p>
             Result articles related to <span class="span">{{ query }}</span>
           </p>
+        </div>
+
+        <div v-else class="div mh-100 wrapper" data-aos="fade">
+          Loading...
         </div>
       </aside>
 
