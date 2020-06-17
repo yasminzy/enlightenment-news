@@ -53,11 +53,17 @@ export default {
     // Get articles related to the selected section
     let route = this.$store.state.route.path.replace("/", "");
 
+    // If the route does not have a % symbol,
     if (!route.includes("%")) {
+      // get the content for this section
       await this.$store.dispatch("getSectionContent", route);
-    } else {
+    }
+    // If the route has it, but it is not a link to an article,
+    else {
+      // fix the route
       route = route.replace(/%252F/g, "/");
 
+      // then go to the _tag page
       this.$router.push({
         name: "tag",
         params: { tag: route }
