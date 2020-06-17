@@ -2,7 +2,7 @@
   <div class="div wrapper">
     <aside class="aside">
       <ul class="ul">
-        <li v-for="item in toc" :key="item.label" data-aos="fade-right">
+        <li v-for="item in toc" :key="item.label" data-aos="fade">
           <a :href="`#${toKebabCase(item.label)}`" class="label">
             {{ item.label }}</a
           >

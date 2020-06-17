@@ -1,5 +1,5 @@
 <template>
-  <form class="form" data-aos="fade-left">
+  <form class="form" data-aos="fade">
     <input
       :value="query"
       class="input"

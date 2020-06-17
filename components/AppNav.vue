@@ -1,6 +1,6 @@
 <template>
   <nav id="top" class="nav">
-    <div class="wrapper" data-aos="fade-left">
+    <div class="wrapper" data-aos="fade">
       <h1 class="h1"><nuxt-link to="/" class="a">ENLIGHTENMENT</nuxt-link></h1>
 
       <ul class="ul">

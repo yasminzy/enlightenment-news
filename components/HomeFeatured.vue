@@ -1,11 +1,11 @@
 <template>
-  <section class="container wrapper">
+  <section class="container">
     <div
       v-for="(item, index) in sections"
       v-show="home[sections[0]]"
       :key="index"
       class="wrapper"
-      data-aos="fade-right"
+      data-aos="fade"
     >
       <header>
         <nuxt-link
@@ -72,14 +72,10 @@ export default {
 <style lang="postcss" scoped>
 .container {
   display: grid;
-  gap: var(--space);
+  padding: var(--space) 0;
 
   @media (--sm) {
     grid-template-columns: 1fr 1fr;
-  }
-
-  @media (--xl) {
-    gap: calc(var(--space) * 2);
   }
 }
 

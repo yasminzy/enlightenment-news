@@ -1,6 +1,6 @@
 <template>
   <div class="posts-container wrapper">
-    <aside class="aside wrapper" data-aos="fade-left">
+    <aside class="aside wrapper" data-aos="fade">
       <div>
         <p>
           Result articles related to

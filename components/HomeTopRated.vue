@@ -1,5 +1,5 @@
 <template>
-  <section class="container mh-100 wrapper">
+  <section class="container wrapper">
     <div v-if="home.topRated[0]" class="div wrapper">
       <h2>Top Rated</h2>
 
@@ -14,13 +14,11 @@
       </ul>
     </div>
 
-    <div v-else class="div wrapper" data-aos="fade-left">Loading...</div>
+    <div v-else class="div mh-100 wrapper" data-aos="fade">
+      Loading...
+    </div>
 
-    <div
-      v-show="home.exchangeRates.rates"
-      class="wrapper"
-      data-aos="fade-right"
-    >
+    <div v-if="home.exchangeRates.rates" class="wrapper">
       <table class="table">
         <caption class="caption">
           Base currency:
@@ -43,6 +41,10 @@
           <td class="td">{{ item[1] }}</td>
         </tr>
       </table>
+    </div>
+
+    <div v-else class="div mh-100 wrapper" data-aos="fade">
+      Loading...
     </div>
   </section>
 </template>
