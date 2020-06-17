@@ -28,6 +28,7 @@ export default {
   ],
   plugins: [
     "./plugins/aos.client",
+    "./plugins/nuxt-interpolation.client",
     "./plugins/vue-lazyload",
     "./plugins/vue-moment",
     "./plugins/vuex-router-sync"

@@ -18,7 +18,7 @@
       </nuxt-link>
     </div>
 
-    <p v-html="trailText" />
+    <p v-interpolation v-html="trailText" />
 
     <details>
       <summary class="summary">Tags</summary>
