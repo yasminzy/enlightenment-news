@@ -1,10 +1,6 @@
 <template>
   <section class="section">
-    <div
-      v-show="home[sections[0]]"
-      class="container mh-100 wrapper"
-      data-aos="fade"
-    >
+    <div v-show="home[sections[0]]" class="container" data-aos="fade">
       <div v-for="(item, index) in sections" :key="index" class="div wrapper">
         <header>
           <nuxt-link
@@ -64,19 +60,15 @@ export default {
   background-color: var(--accent);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
   color: var(--light);
+  padding: var(--space) 0;
 }
 
 .container {
   display: grid;
-  gap: var(--space);
 
   @media (--sm) {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: minmax(auto, max-content);
-  }
-
-  @media (--xl) {
-    gap: calc(var(--space) * 2);
   }
 
   & > .div {

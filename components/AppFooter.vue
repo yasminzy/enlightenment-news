@@ -1,10 +1,11 @@
 <template>
   <footer class="footer">
-    <div class="wrapper" data-aos="fade">
+    <div class="wrapper">
       <div class="social">
         Follow Enlightenment:
+
         <ul class="ul">
-          <li v-for="(item, index) in social" :key="index">
+          <li v-for="(item, index) in social" :key="index" class="li">
             <a :href="item.link" class="a">
               <component :is="item.icon" />
             </a>
@@ -26,7 +27,7 @@
 
         <li v-for="(item, index) in links" :key="index">
           <nuxt-link :to="`/${item.link}`" class="a">
-            <p v-html="item.text"></p>
+            {{ item.text }}
           </nuxt-link>
         </li>
       </ul>
@@ -99,8 +100,18 @@ export default {
 }
 
 .social {
-  align-items: center;
-  display: flex;
+  & .li:first-child {
+    margin-left: -0.5rem;
+
+    @media (--sm) {
+      margin-left: 0;
+    }
+  }
+
+  @media (--sm) {
+    align-items: center;
+    display: flex;
+  }
 
   & .a {
     padding: 0 0.5rem;
@@ -111,7 +122,12 @@ export default {
   display: flex;
   flex-wrap: wrap;
   list-style-type: none;
+  margin-top: 0.5rem;
   padding-left: 0;
+
+  @media (--sm) {
+    padding-top: 0;
+  }
 }
 
 .a {

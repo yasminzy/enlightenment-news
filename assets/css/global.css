@@ -44,6 +44,7 @@ button {
 
 a {
   color: var(--accent-2);
+  outline: none;
   text-decoration: none;
 }
 
@@ -130,7 +131,11 @@ figcaption {
 }
 
 .mh-100 {
-  min-height: 100vh;
+  min-height: 100%;
+
+  @media (--md) {
+    min-height: 100vh;
+  }
 }
 
 .posts-container {
@@ -159,7 +164,7 @@ figcaption {
 
 .wrapper {
   max-width: 992px;
-  padding: calc(var(--space) / 2);
+  padding: var(--space);
   margin: 0 auto;
 }
 
