@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div v-show="home[sections[0]]" class="container" data-aos="fade">
-      <div v-for="(item, index) in sections" :key="index" class="div wrapper">
+      <div v-for="(item, index) in sections" :key="index" class="wrapper">
         <header>
           <nuxt-link
             :to="{ name: 'section', params: { section: item } }"
@@ -19,7 +19,7 @@
                 backgroundImage: `url(${subitem.fields.thumbnail})`
               }"
             >
-              <div class="div-2">
+              <div class="div">
                 <h3 class="h3">{{ subitem.webTitle }}</h3>
               </div>
             </div>
@@ -60,19 +60,20 @@ export default {
   background-color: var(--accent);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='199' viewBox='0 0 100 199'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
   color: var(--light);
-  padding: var(--space) 0;
+  padding: var(--space) calc(var(--space) * 2);
 }
 
 .container {
   display: grid;
 
   @media (--sm) {
+    column-gap: var(--space);
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(auto, max-content);
   }
 
-  & > .div {
-    height: auto;
+  & .wrapper {
+    justify-self: start;
+    margin: 0;
   }
 }
 
@@ -85,7 +86,7 @@ export default {
 }
 
 .bg {
-  background-position: center center;
+  background-position: top left;
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: var(--shadow);
@@ -95,12 +96,12 @@ export default {
   }
 
   &.dark {
-    & .div-2 {
+    & .div {
       background-color: var(--dark);
     }
   }
 
-  & .div-2 {
+  & .div {
     align-items: flex-end;
     background-color: rgba(33, 33, 33, 0.25);
     display: flex;

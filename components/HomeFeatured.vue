@@ -1,40 +1,44 @@
 <template>
-  <section class="container">
-    <div
-      v-for="(item, index) in sections"
-      v-show="home[sections[0]]"
-      :key="index"
-      class="wrapper"
-      data-aos="fade"
-    >
-      <header>
-        <nuxt-link
-          :to="{ name: 'section', params: { section: item } }"
-          class="a header-a"
-        >
-          <h3>{{ item.toUpperCase() }}</h3>
+  <section class="section">
+    <div class="container" data-aos="fade">
+      <div
+        v-for="(item, index) in sections"
+        v-show="home[sections[0]]"
+        :key="index"
+        class="wrapper"
+      >
+        <header>
+          <nuxt-link
+            :to="{ name: 'section', params: { section: item } }"
+            class="a header-a"
+          >
+            <h3>{{ item.toUpperCase() }}</h3>
 
-          <ChevronRightIcon />
-        </nuxt-link>
-      </header>
-
-      <hr class="hr" />
-
-      <ul class="ul">
-        <li v-for="subitem in home[item]" :key="subitem.id" class="li">
-          <nuxt-link :to="{ name: 'id', params: { id: subitem.id } }" class="a">
-            <div class="img-wrapper">
-              <img
-                v-lazy="subitem.fields.thumbnail"
-                :alt="subitem.webTitle"
-                class="hvr hvr-grow img"
-              />
-            </div>
-
-            <h4 class="h4">{{ subitem.webTitle }}</h4>
+            <ChevronRightIcon />
           </nuxt-link>
-        </li>
-      </ul>
+        </header>
+
+        <hr class="hr" />
+
+        <ul class="ul">
+          <li v-for="subitem in home[item]" :key="subitem.id" class="li">
+            <nuxt-link
+              :to="{ name: 'id', params: { id: subitem.id } }"
+              class="a"
+            >
+              <div class="img-wrapper">
+                <img
+                  v-lazy="subitem.fields.thumbnail"
+                  :alt="subitem.webTitle"
+                  class="hvr hvr-grow img"
+                />
+              </div>
+
+              <h4 class="h4">{{ subitem.webTitle }}</h4>
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -70,12 +74,21 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.section {
+  padding: var(--space) calc(var(--space) * 2);
+}
+
 .container {
   display: grid;
-  padding: var(--space) 0;
 
   @media (--sm) {
+    column-gap: var(--space);
     grid-template-columns: 1fr 1fr;
+  }
+
+  & .wrapper {
+    justify-self: start;
+    margin: 0;
   }
 }
 
@@ -102,8 +115,7 @@ export default {
   & .a {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: calc(var(--space) / 2) var(--space);
+    padding: var(--space) 0;
   }
 
   & .img {
@@ -116,7 +128,11 @@ export default {
   }
 
   &:not(:first-child) {
-    border-top: 1px solid var(--grey);
+    border-top: 1px solid var(--accent);
+
+    & .a {
+      padding: calc(var(--space) / 2) 0;
+    }
 
     & .img {
       display: none;
