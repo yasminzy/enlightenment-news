@@ -4,13 +4,13 @@
 
 ## 🙋‍♀️ Introduction
 
-This is a sample news website I build with [Nuxt](https://nuxtjs.org/) and host at [Netlify](https://www.netlify.com/)💖. I use [Vuex]() to get news from [The Guardian](https://open-platform.theguardian.com). As a little touch, I also include exchange rates for some currencies from [Exchange Rates](https://exchangeratesapi.io/).
+This is a sample news website I build with [Nuxt](https://nuxtjs.org/) and host at [Netlify](https://www.netlify.com/)💖. I get the news from [The Guardian](https://open-platform.theguardian.com). As a little touch, I also include exchange rates for some currencies from [Exchange Rates](https://exchangeratesapi.io/).
 
-For the styling, I only use [normalize.css](https://necolas.github.io/normalize.css/) as the base and write custom CSS with [PostCSS](https://postcss.org/) plugins. I use [AOS](https://michalsnik.github.io/aos/) and [Feather Icons](https://feathericons.com/) for the animation and icon pack, respectively. Furthermore, I lazyload images with [Lazyload](http://hilongjw.github.io/vue-lazyload/) and use [Moment](http://www.momentjs.com/) for time formatting. Last but not least, I use [Nuxt Interpolation](https://github.com/daliborgogic/nuxt-interpolation) to make relative links rendered with `v-html` use the router.
+For the styling, I only use [normalize.css](https://necolas.github.io/normalize.css/) as the base and write custom CSS with [PostCSS](https://postcss.org/) plugins. I use [AOS](https://michalsnik.github.io/aos/) and [Feather Icons](https://feathericons.com/) for the animation and icon pack, respectively. Furthermore, I lazyload images with [Lazyload](http://hilongjw.github.io/vue-lazyload/) and use [Moment](https://github.com/brockpetrie/vue-moment) for time formatting. Last but not least, I use [Nuxt Interpolation](https://github.com/daliborgogic/nuxt-interpolation) to make relative links rendered with `v-html` use the router.
 
 This is meant as a demonstration of how to use the building blocks above. Enjoy! 😄
 
-## 👩‍💻 Get Started
+## 👩‍💻 Get Star
 
 > I use Node.js v14.4.0 and npm v6.14.5.
 

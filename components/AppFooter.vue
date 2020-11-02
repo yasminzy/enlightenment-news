@@ -99,7 +99,18 @@ export default {
   row-gap: calc(var(--space) / 2);
 }
 
+.a {
+  display: block;
+  color: var(--accent);
+}
+
 .social {
+  & .links .li {
+    @media (--sm) {
+      margin-right: 1rem;
+    }
+  }
+
   & .li:first-child {
     margin-left: -0.5rem;
 
@@ -130,11 +141,6 @@ export default {
   }
 }
 
-.a {
-  display: block;
-  color: var(--accent);
-}
-
 .links {
   column-gap: var(--space);
   display: grid;
@@ -145,12 +151,6 @@ export default {
 
   @media (--md) {
     display: flex;
-  }
-
-  & .li {
-    @media (--sm) {
-      margin-right: 1rem;
-    }
   }
 }
 </style>

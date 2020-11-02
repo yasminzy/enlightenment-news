@@ -1,5 +1,5 @@
 {
-  "arrowParens": "always",
   "endOfLine": "auto",
+  "jsx-bracket-same-line": true,
   "trailingComma": "none"
 }

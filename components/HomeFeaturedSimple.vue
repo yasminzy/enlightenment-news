@@ -95,12 +95,6 @@ export default {
     opacity: 0.75;
   }
 
-  &.dark {
-    & .div {
-      background-color: var(--dark);
-    }
-  }
-
   & .div {
     align-items: flex-end;
     background-color: rgba(33, 33, 33, 0.25);
@@ -109,6 +103,12 @@ export default {
     min-height: 225px;
     padding: calc(var(--space) / 2);
     width: 100%;
+  }
+
+  &.dark {
+    & .div {
+      background-color: var(--dark);
+    }
   }
 }
 

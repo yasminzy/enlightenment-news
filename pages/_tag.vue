@@ -30,14 +30,8 @@
 
 <script>
 import axios from "axios";
-import PostListItem from "~/components/PostListItem";
-import SearchBox from "~/components/SearchBox";
 
 export default {
-  components: {
-    PostListItem,
-    SearchBox
-  },
   async asyncData({ params }) {
     // Get articles related to the selected tag
     const { data } = await axios.get(
@@ -58,6 +52,6 @@ export default {
 }
 
 .span {
-  font-weight: bold;
+  font-weight: 600;
 }
 </style>

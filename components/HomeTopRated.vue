@@ -14,9 +14,7 @@
       </ul>
     </div>
 
-    <div v-else class="div mh-100 wrapper" data-aos="fade">
-      Loading...
-    </div>
+    <div v-else class="div mh-100 wrapper" data-aos="fade">Loading...</div>
 
     <div v-if="home.exchangeRates.rates" class="wrapper">
       <table class="table">
@@ -43,9 +41,7 @@
       </table>
     </div>
 
-    <div v-else class="div mh-100 wrapper" data-aos="fade">
-      Loading...
-    </div>
+    <div v-else class="div mh-100 wrapper" data-aos="fade">Loading...</div>
   </section>
 </template>
 

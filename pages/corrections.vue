@@ -49,6 +49,10 @@
   margin: 0;
 }
 
+.textarea {
+  min-height: 10rem;
+}
+
 .input,
 .textarea {
   background-color: var(--light);
@@ -63,10 +67,6 @@
     border-style: dashed;
     outline: 0;
   }
-}
-
-.textarea {
-  min-height: 10rem;
 }
 
 .button {

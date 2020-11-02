@@ -45,9 +45,8 @@ export default {
 <style lang="postcss" scoped>
 .nav {
   color: var(--light);
-  background-color: var(--dark);
-  background: -webkit-linear-gradient(to right, var(--dark), var(--accent));
   background: linear-gradient(to right, var(--dark), var(--accent));
+  background-color: var(--dark);
   box-shadow: var(--shadow);
 }
 

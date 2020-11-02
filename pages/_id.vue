@@ -75,10 +75,8 @@ export default {
           params: { section: route }
         });
       }
-    }
-    // If the data is undefined because the content is commercial,
-    else if (process.client) {
-      // fix the route
+    } else if (process.client) {
+      // If the data is undefined because the content is commercial, fix the route
       route = route.replace(/%2F/g, "/");
 
       // then go to the real page

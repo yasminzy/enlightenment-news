@@ -10,9 +10,7 @@
           </p>
         </div>
 
-        <div v-else class="div mh-100 wrapper" data-aos="fade">
-          Loading...
-        </div>
+        <div v-else class="div mh-100 wrapper" data-aos="fade">Loading...</div>
       </aside>
 
       <article class="wrapper">
@@ -35,14 +33,8 @@
 
 <script>
 import { toKebabCase } from "~/assets/js/functions";
-import PostListItem from "~/components/PostListItem";
-import SearchBox from "~/components/SearchBox";
 
 export default {
-  components: {
-    PostListItem,
-    SearchBox
-  },
   computed: {
     query() {
       return this.$store.getters.searchQuery;
@@ -84,6 +76,6 @@ export default {
 }
 
 .span {
-  font-weight: bold;
+  font-weight: 600;
 }
 </style>

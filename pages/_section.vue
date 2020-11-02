@@ -33,14 +33,7 @@
 </template>
 
 <script>
-import PostListItem from "~/components/PostListItem";
-import SearchBox from "~/components/SearchBox";
-
 export default {
-  components: {
-    PostListItem,
-    SearchBox
-  },
   computed: {
     content() {
       return this.$store.getters.content;
@@ -57,10 +50,8 @@ export default {
     if (!route.includes("%")) {
       // get the content for this section
       await this.$store.dispatch("getSectionContent", route);
-    }
-    // If the route has that symbol, but it is not a link to an article,
-    else {
-      // fix the route
+    } else {
+      // If the route has that symbol, but it is not a link to an article, fix the route
       route = route.replace(/%252F/g, "/");
 
       // then go to the _tag page

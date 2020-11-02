@@ -642,25 +642,28 @@
         <li>
           <a
             href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
-            >Mozilla Firefox</a
           >
+            Mozilla Firefox
+          </a>
         </li>
         <li>
           <a
             href="https://support.microsoft.com/en-us/help/17442/windows-internet-explorer-delete-manage-cookies#ie=ie-11"
-            >Microsoft Internet Explorer</a
           >
+            Microsoft Internet Explorer
+          </a>
         </li>
         <li>
           <a href="https://support.google.com/accounts/answer/61416?hl=en">
-            Google Chrome</a
-          >
+            Google Chrome
+          </a>
         </li>
         <li>
           <a
             href="https://support.apple.com/kb/PH21411?viewlocale=en_US&locale=en_US"
-            >Safari</a
           >
+            Safari
+          </a>
         </li>
       </ul>
 
@@ -678,9 +681,8 @@
           page for information on how to
           <a
             href="http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager.html"
-          >
-            manage your privacy settings and deletion of Flash cookies.</a
-          >
+            >manage your privacy settings and deletion of Flash cookies.
+          </a>
         </li>
 
         <li>
@@ -738,7 +740,7 @@
         <a
           href="https://www.iab.com/self-regulatory-principles-for-online-behavioral-advertising/"
         >
-          http://www.iab.net/public_policy/behavioral-advertisingprinciples</a
+          http://www.iab.net/public_policy/behavioral-advertisingprinciples </a
         >.
       </p>
 
@@ -897,12 +899,8 @@
 
 <script>
 import { toKebabCase } from "~/assets/js/functions";
-import BackToTop from "~/components/BackToTop";
 
 export default {
-  components: {
-    BackToTop
-  },
   data() {
     return {
       toc: [

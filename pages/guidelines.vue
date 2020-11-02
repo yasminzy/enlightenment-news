@@ -16,9 +16,8 @@
         The following guidelines apply to all advertisements published on any
         Enlightenment platform, including advertisements created by our
         advertisers or in collaboration with Enlightenment Solutions. An
-        advertisement is content controlled and paid for by a third
-        party.</strong
-      >
+        advertisement is content controlled and paid for by a third party.
+      </strong>
     </p>
 
     <ul>
@@ -57,8 +56,8 @@
       <strong>
         The following guidelines apply to content independently created by
         Enlightenment’ news department, but funded in whole or in part by a
-        paying sponsor:</strong
-      >
+        paying sponsor:
+      </strong>
     </p>
 
     <ul>

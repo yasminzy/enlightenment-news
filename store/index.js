@@ -5,7 +5,7 @@ import {
   getSearchResultsUrl,
   getSectionContentUrl,
   getSectionTagsUrl
-} from "~/assets/js/functions";
+} from "@/assets/js/functions";
 
 const config = {
   headers: {
@@ -55,21 +55,21 @@ export const state = () => ({
 });
 
 export const getters = {
-  home(state) {
+  home: (state) => {
     return state.home;
   },
-  content(state) {
+  content: (state) => {
     const route = state.route.path.replace("/", "");
     return state.content[route];
   },
-  tags(state) {
+  tags: (state) => {
     const route = state.route.path.replace("/", "");
     return state.tags[route];
   },
-  searchQuery(state) {
+  searchQuery: (state) => {
     return state.search.query;
   },
-  searchResults(state) {
+  searchResults: (state) => {
     return state.search.results;
   }
 };
