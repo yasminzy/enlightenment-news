@@ -20,7 +20,7 @@
     }
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "^5.12.3",
     "aos": "^3.0.0-beta.6",
     "core-js": "^3.7.0",
     "normalize.css": "^8.0.1",
