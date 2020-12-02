@@ -7,7 +7,7 @@ export default ({ app: { router } }) => {
   Vue.directive("interpolation", {
     // Called only once, when the directive is first bound to the element. This is where you can do one-time setup work.
     bind(el) {
-      const navigate = (event) => {
+      const navigate = event => {
         const href = event.target.getAttribute("href");
         if (href && href[0] === "/") {
           event.preventDefault();
@@ -20,7 +20,7 @@ export default ({ app: { router } }) => {
 
       const links = el.getElementsByTagName("a");
 
-      const addListeners = (links) => {
+      const addListeners = links => {
         for (let i = 0; i < links.length; i++) {
           const target = links[i].getAttribute("target");
 
@@ -33,7 +33,7 @@ export default ({ app: { router } }) => {
         }
       };
 
-      const removeListeners = (links) => {
+      const removeListeners = links => {
         for (let i = 0; i < links.length; i++) {
           links[i].removeEventListener("click", navigate, false);
         }
@@ -52,9 +52,9 @@ export default ({ app: { router } }) => {
     },
 
     // Called after the containing component’s VNode and the VNodes of its children have updated.
-    componentUpdated: (el) => el.$componentUpdated(),
+    componentUpdated: el => el.$componentUpdated(),
 
     // Called only once, when the directive is unbound from the element.
-    unbind: (el) => el.$destroy()
+    unbind: el => el.$destroy()
   });
 };
