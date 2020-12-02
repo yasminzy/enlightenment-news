@@ -10,9 +10,7 @@ For the styling, I only use [normalize.css](https://necolas.github.io/normalize.
 
 This is meant as a demonstration of how to use the building blocks above. Enjoy! 😄
 
-## 👩‍💻 Get Star
-
-> I use Node.js v14.4.0 and npm v6.14.5.
+## 👩‍💻 Get Started
 
 ```bash
 # Clone this repo
