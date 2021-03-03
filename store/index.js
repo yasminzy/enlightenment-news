@@ -123,7 +123,12 @@ export const actions = {
   async getLatestExchangeRate({ commit, dispatch }, options) {
     await dispatch("getHomeTopRatedContent");
 
-    const response = await this.$axios.$get(getLatestExchangeRateUrl(options));
+    const response = await this.$axios.$get(getLatestExchangeRateUrl(options), {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    });
+
     const content = {
       base: response.base,
       rates: Object.entries(response.rates)
