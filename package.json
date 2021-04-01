@@ -25,7 +25,7 @@
     "core-js": "^3.9.1",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.15.2",
-    "postcss-import": "^14.0.0",
+    "postcss-import": "^14.0.1",
     "postcss-preset-env": "^6.7.0",
     "rucksack-css": "^1.0.2",
     "vue-feather-icons": "^5.1.0",
