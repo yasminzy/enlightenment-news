@@ -1,7 +1,6 @@
 import {
   getHomeContentUrl,
   getHomeTopRatedContentUrl,
-  getLatestExchangeRateUrl,
   getSearchResultsUrl,
   getSectionContentUrl,
   getSectionTagsUrl
@@ -16,7 +15,6 @@ const config = {
 export const state = () => ({
   home: {
     business: [],
-    exchangeRates: [],
     fashion: [],
     film: [],
     food: [],
@@ -75,9 +73,6 @@ export const getters = {
 };
 
 export const mutations = {
-  exchangeRates(state, content) {
-    state.home.exchangeRates = content;
-  },
   homeTopRated(state, content) {
     state.home.topRated = content;
   },
@@ -118,22 +113,6 @@ export const actions = {
     );
     const content = response.response.results;
     commit("homeTopRated", content);
-  },
-
-  async getLatestExchangeRate({ commit, dispatch }, options) {
-    await dispatch("getHomeTopRatedContent");
-
-    const response = await this.$axios.$get(getLatestExchangeRateUrl(options), {
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    });
-
-    const content = {
-      base: response.base,
-      rates: Object.entries(response.rates)
-    };
-    commit("exchangeRates", content);
   },
 
   async getSearchResults({ commit }, query) {

@@ -1,6 +1,5 @@
 // API docs
 // http://open-platform.theguardian.com/documentation/tag
-// https://exchangeratesapi.io/
 
 export function getHomeContentUrl(section, size) {
   return `https://content.guardianapis.com/search?section=${section}&page-size=${size}&show-fields=trailText,thumbnail&show-tags=keyword&api-key=${process.env.NUXT_ENV_GUARDIAN_API_KEY}`;
@@ -8,10 +7,6 @@ export function getHomeContentUrl(section, size) {
 
 export function getHomeTopRatedContentUrl() {
   return `https://content.guardianapis.com/search?star-rating=5&page-size=5&api-key=${process.env.NUXT_ENV_GUARDIAN_API_KEY}`;
-}
-
-export function getLatestExchangeRateUrl(options) {
-  return `https://cors-anywhere.herokuapp.com/https://api.exchangeratesapi.io/latest?${options}`;
 }
 
 export function getSearchResultsUrl(query) {

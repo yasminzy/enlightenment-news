@@ -65,15 +65,15 @@ export default {
 
 .container {
   display: grid;
+  margin: 0 auto;
 
   @media (--sm) {
     column-gap: var(--space);
     grid-template-columns: 1fr 1fr;
   }
 
-  & .wrapper {
-    justify-self: start;
-    margin: 0;
+  @media (--md) {
+    max-width: 150ch;
   }
 }
 
