@@ -5,9 +5,13 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    plugins: ["@babel"]
+    parser: "babel-eslint"
   },
-  extends: ["@nuxtjs", "plugin:nuxt/recommended"],
+  extends: [
+    "@nuxtjs",
+    "plugin:prettier/recommended",
+    "plugin:nuxt/recommended"
+  ],
   plugins: [],
   rules: {
     "arrow-parens": 0,
