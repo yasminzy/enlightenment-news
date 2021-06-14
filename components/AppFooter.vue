@@ -23,7 +23,7 @@
       </p>
 
       <ul class="links ul">
-        <li class="li">&copy; 2018-2020 Enlightenment</li>
+        <li class="li">&copy; 2018-2021 Enlightenment</li>
 
         <li v-for="(item, index) in links" :key="index">
           <nuxt-link :to="`/${item.link}`" class="a">
