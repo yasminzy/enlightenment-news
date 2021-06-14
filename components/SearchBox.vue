@@ -9,11 +9,7 @@
       @input="updateQuery"
     />
 
-    <div
-      v-if="
-        !this.$store.state.route || this.$store.state.route.path !== '/search'
-      "
-    >
+    <div v-if="!$store.state.route || $store.state.route.path !== '/search'">
       <button class="button" @click.prevent="$router.push('/search')">
         <Search-Icon />
       </button>
