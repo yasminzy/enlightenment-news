@@ -4,7 +4,11 @@
 
 [build]
   publish = "dist"
+<<<<<<< HEAD
   command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
+=======
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm generate"
+>>>>>>> 6fd4461daeb57499d6f173f27d706e90e93dbe07
 
 [[redirects]]
   from = "/*"
