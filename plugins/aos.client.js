@@ -1,7 +1,7 @@
-import AOS from "aos";
+import { defineNuxtPlugin } from "#app"
+import AOS from "aos"
+import "aos/dist/aos.css"
 
-import "aos/dist/aos.css";
-
-export default ({ app }) => {
-  app.AOS = new AOS.init({ disable: "phone" }); // eslint-disable-line new-cap
-};
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(AOS.init({ once: true }))
+})
