@@ -1,10 +1,10 @@
 [build.environment]
   NPM_FLAGS = "--version"
-  NODE_VERSION = "18"
+  NODE_VERSION = "16"
 
 [build]
-  publish = ".output/public"
-  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm generate"
+  publish = "dist"
+  command = "npx pnpm i --store=node_modules/.pnpm-store && npx pnpm run build"
 
 [[redirects]]
   from = "/*"
