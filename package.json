@@ -1,54 +1,33 @@
 {
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-    "lint": "npm run lint:js"
-  },
-  "lint-staged": {
-    "*.{js,vue}": "eslint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "preview": "nuxt preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.6",
-    "aos": "^3.0.0-beta.6",
-    "core-js": "^3.14.0",
-    "normalize.css": "^8.0.1",
-    "nuxt": "^2.15.7",
-    "postcss-import": "^14.0.2",
-    "postcss-preset-env": "^6.7.0",
-    "rucksack-css": "^1.0.2",
-    "vue-feather-icons": "^5.1.0",
-    "vue-lazyload": "^1.3.3",
-    "vue-moment": "^4.1.0",
-    "vuex-router-sync": "^5.0.0"
+    "@pinia/nuxt": "^0.1.8",
+    "nuxt": "^3.0.0-rc.1",
+    "pinia": "^2.0.13"
   },
   "devDependencies": {
-    "@nuxt/postcss8": "^1.1.3",
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/eslint-config": "^6.0.1",
-    "@nuxtjs/eslint-module": "^3.0.2",
-    "babel-eslint": "^10.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.11.1",
-    "eslint": "^7.28.0",
-    "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "prettier": "^2.3.1",
-    "sass-loader": "^10.2.0",
-    "sass": "^1.35.0"
-  },
-  "engines": {
-    "node": ">=16.3.0",
-    "npm": ">=7.16.0"
+    "@iconify-json/fe": "^1.1.1",
+    "@rushstack/eslint-patch": "^1.1.3",
+    "@unocss/nuxt": "^0.31.13",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vueuse/core": "^8.3.1",
+    "@vueuse/integrations": "^8.3.1",
+    "@vueuse/nuxt": "^8.3.1",
+    "aos": "^3.0.0-beta.6",
+    "change-case": "^4.1.2",
+    "eslint": "^8.14.0",
+    "eslint-plugin-vue": "^8.7.1",
+    "nprogress": "^0.2.0",
+    "nuxt3-interpolation": "^1.0.16",
+    "prettier": "^2.6.2",
+    "vite": "^2.9.5",
+    "vue-lazyload-next": "^0.0.2"
   }
 }
