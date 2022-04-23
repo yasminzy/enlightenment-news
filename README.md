@@ -6,21 +6,21 @@
 
 This is a Nuxt 3 news site demo.
 
-| Item              | Link                                                                                         |     |
-| ----------------- | -------------------------------------------------------------------------------------------- | --- |
-| Animation         | [AOS](https://michalsnik.github.io/aos/)                                                     |     |
-| API               | [The Guardian](https://open-platform.theguardian.com/)                                       |     |
-| CSS               | [UnoCSS](https://unocss.antfu.me/), [sanitize.css](https://csstools.github.io/sanitize.css/) |     |
-| Formatter         | [Prettier](https://prettier.io/)                                                             |     |
-| Framework         | [Nuxt](https://v3.nuxtjs.org/)                                                               |     |
-| Hosting           | [Netlify](https://www.netlify.com/)                                                          |     |
+| Item              | Link                                                                                         |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| Animation         | [AOS](https://michalsnik.github.io/aos/)                                                     |
+| API               | [The Guardian](https://open-platform.theguardian.com/)                                       |
+| CSS               | [UnoCSS](https://unocss.antfu.me/), [sanitize.css](https://csstools.github.io/sanitize.css/) |
+| Formatter         | [Prettier](https://prettier.io/)                                                             |
+| Framework         | [Nuxt](https://v3.nuxtjs.org/)                                                               |
+| Hosting           | [Netlify](https://www.netlify.com/)                                                          |
 | Icon              | [Feather Icon](https://icones.js.org/collection/fe)                                          |
 | Lazy loading      | [Vue Lazyload Next](https://github.com/caozhong1996/vue-lazyload-next)                       |
 | Link catcher      | [Nuxt 3 Interpolation](https://github.com/daliborgogic/interpolation)                        |
-| Linter            | [ESLint](https://eslint.org/)                                                                |     |
-| Loading indicator | [NProgress](https://ricostacruz.com/nprogress/)                                              |     |
-| Store             | [Pinia](https://pinia.vuejs.org/)                                                            |     |
-| Utilities         | [VueUse](https://vueuse.org/)                                                                |     |
+| Linter            | [ESLint](https://eslint.org/)                                                                |
+| Loading indicator | [NProgress](https://ricostacruz.com/nprogress/)                                              |
+| Store             | [Pinia](https://pinia.vuejs.org/)                                                            |
+| Utilities         | [VueUse](https://vueuse.org/)                                                                |
 
 ## 👩‍💻 Get Started
 
@@ -56,12 +56,12 @@ This is a Nuxt 3 news site demo.
 
 ## 📁 Page Explanation
 
-The homepage is in `index.vue`. There are 2 sections: featured (`components/HomeFeatured.vue`) and top rated (`components/HomeTopRated.vue`). Both use the store (`stores/home.js`).
+The homepage is in `index.vue`. There are 2 sections: featured (`components/HomeFeatured.vue`) and top-rated (`components/HomeTopRated.vue`). Both use the store (`stores/home.js`).
 
-The search pages is in `search/`. The `index.vue` one only show the search box (`components/SearchBox.vue`), which uses the store as well (`stores/search.js`). When performing search, we will get to the `[query].vue` one.
+The search page is in `search/`. The `index.vue` one only shows the search box (`components/SearchBox.vue`), which uses the store as well (`stores/search.js`). When performing a search, we will get to the `[query].vue` one.
 
 The `[id].vue` is for the article. It is dynamic, like `[section].vue` and `[tag].vue`, but it is prioritized. It means that if it is not clear which one is the right place for the content, e.g. when refreshing the page, we will be pointed to `[id]`.
 
-In `[id]`, we check if it is actually a section or tags page. We will go there if that is the case. And if the content is not accessible with our developer key, the page will be redirected to the original page in [The Guardian website](https://www.theguardian.com/us).
+In `[id]`, we check if it is a section or tags page. We will go there if that is the case. And if the content is not accessible with our developer key, the page will be redirected to the original page on [The Guardian website](https://www.theguardian.com/us).
 
-We catch the links to another The Guardian article and remove the original domain so we can show them in this website. However, we will get an error page with just this. So, we catch them with `[...slug].vue` and go to `[id].vue` again.
+We catch the links to another The Guardian article and remove the original domain so we can show them on this website. However, we will get an error page with just this. So, we catch them with `[...slug].vue` and go to `[id].vue` again.
