@@ -1,98 +1,67 @@
 <template>
-  <form class="form" data-aos="fade">
+  <form class="flex max-h-max">
     <input
-      :value="query"
-      class="input"
-      placeholder="What are you looking for?"
+      v-model="store.query"
+      class="rounded-tl-lg rounded-bl-lg max-h-max border-2 border-stone-500 w-full px-4"
+      placeholder="Looking for something?"
       required
       type="text"
-      @input="updateQuery"
-    />
+      @keyup.enter="handleInput" />
 
-    <div v-if="!$store.state.route || $store.state.route.path !== '/search'">
-      <button class="button" @click.prevent="$router.push('/search')">
-        <Search-Icon />
-      </button>
-    </div>
-
-    <div v-else>
-      <button class="button" @click.prevent="search">
-        <Search-Icon />
-      </button>
-    </div>
+    <button
+      class="border-none rounded-tr-lg rounded-br-lg cursor-pointer flex max-w-fit bg-stone-500 py-2 px-4 text-stone-50 items-center"
+      hover="opacity-75"
+      @click.prevent="handleInput">
+      <div class="i-fe-search" />
+    </button>
   </form>
 </template>
 
-<script>
-import { SearchIcon } from "vue-feather-icons";
-import { toKebabCase } from "~/assets/js/functions";
+<script setup>
+import { useStore } from "@/stores/search"
+import { useChangeCase } from "@vueuse/integrations/useChangeCase"
 
-export default {
-  components: {
-    SearchIcon
-  },
-  computed: {
-    query() {
-      return this.$store.getters.searchQuery;
-    }
-  },
-  methods: {
-    updateQuery(event) {
-      this.$store.commit("updateQuery", event.target.value);
-    },
-    search() {
-      const query = toKebabCase(this.query);
-      if (query) {
-        this.$store.dispatch("getSearchResults", query);
-      }
-    },
-    toKebabCase
+const store = useStore()
+const route = useRoute()
+
+onBeforeMount(() => {
+  checkIfRefreshingPage()
+})
+
+function checkIfRefreshingPage() {
+  const isRefreshingPage = route.name === "search-query" && !store.query
+
+  if (isRefreshingPage) {
+    const queryFromUrl = route.path.replace("/search/", "")
+
+    store.query = useChangeCase(queryFromUrl, "noCase").value
+    handleInput()
   }
-};
+}
+
+function handleInput() {
+  getSearchResults()
+  goToSearchPage()
+}
+
+async function getSearchResults() {
+  const firstQuery = !store.prevQuery
+  const sameQuery = store.query === store.prevQuery
+  const key = useRuntimeConfig().public.guardianApiKey
+
+  if (store.query && (firstQuery || !sameQuery)) {
+    await store.getSearchResults(key)
+
+    store.prevQuery = store.query
+  }
+}
+
+async function goToSearchPage() {
+  if (store.query) {
+    await navigateTo({
+      name: "search-query",
+      params: { query: store.paramCaseQuery }
+    })
+  }
+}
 </script>
-
-<style lang="postcss" scoped>
-.form {
-  align-items: stretch;
-  display: grid;
-  grid-template-columns: 5fr minmax(max-content, 1fr);
-  margin: var(--space) auto;
-}
-
-.button,
-.input {
-  color: inherit;
-  font: inherit;
-  height: 100%;
-  margin: 0;
-}
-
-.input {
-  background-color: var(--light);
-  border: 1px solid var(--accent-2);
-  line-height: inherit;
-  padding: calc(var(--space) / 4) calc(var(--space) / 2);
-  width: 100%;
-
-  &:focus {
-    border-style: dashed;
-    outline: 0;
-  }
-}
-
-.button {
-  background-color: var(--dark);
-  border: 0;
-  color: var(--light);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  padding: calc(var(--space) / 4) calc(var(--space) / 2);
-  text-align: center;
-  width: 100%;
-
-  &:hover {
-    background-color: var(--accent-2);
-  }
-}
-</style>
