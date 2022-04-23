@@ -33,7 +33,7 @@ This is a Nuxt 3 news site demo.
 1. Install the packages.
 
    ```bash
-   pnpm i
+   pnpm i --shamefully-hoist
    ```
 
 1. [Register for a developer key](https://bonobo.capi.gutools.co.uk/register/developer). Copy the API key.
