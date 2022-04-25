@@ -1,8 +1,8 @@
 <template>
-  <section>
+  <section v-if="store.topRated.length">
     <BaseTitle title="Top Rated" :search="false" />
 
-    <div v-if="store.topRated.length">
+    <div>
       <PostList :data="store.topRated" :style="'minimal'" />
     </div>
   </section>

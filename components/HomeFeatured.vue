@@ -1,8 +1,8 @@
 <template>
-  <section>
+  <section v-if="store.featured.length">
     <BaseTitle title="Featured" />
 
-    <div v-if="store.featured.length">
+    <div>
       <PostList :data="store.featured" :style="'horizontal'" />
     </div>
   </section>
