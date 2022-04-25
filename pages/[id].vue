@@ -1,18 +1,22 @@
 <template>
-  <div
-    v-if="data"
-    class="grid gap-12"
-    lg="grid-cols-[2fr_1fr]"
-    xl="grid-cols-[3fr_1fr]">
-    <article data-aos="slide-up" class="max-w-[80ch] card">
-      <h1 class="font-medium mt-0">{{ title }}</h1>
+  <div v-if="data" class="grid gap-12" xl="grid-cols-[3fr_1fr]">
+    <article data-aos="slide-right" class="mx-auto max-w-[80ch]" xl="card ml-0">
+      <h1
+        class="font-medium leading-relaxed text-3xl"
+        xl="mt-0 leading-relaxed text-4xl">
+        {{ title }}
+      </h1>
 
       <small>{{ date }}</small>
 
       <div v-interpolation class="mb-0" v-html="body" />
     </article>
 
-    <div data-aos="slide-right" data-aos-delay="50" lg="ml-auto">
+    <div
+      data-aos="slide-left"
+      data-aos-delay="200"
+      class="mx-auto max-w-[80ch]"
+      xl="ml-auto">
       <PostTags :data="tags" />
     </div>
   </div>
@@ -66,7 +70,7 @@ function checkIfNeedRedirect() {
 }
 
 function checkIfRefreshingPage() {
-  const isArticlePage = (path.match(/\//g) || []).length === 4
+  const isArticlePage = (path.match(/\//g) || []).length >= 4
 
   if (data.value === null) {
     isArticlePage ? refresh() : navigate()
