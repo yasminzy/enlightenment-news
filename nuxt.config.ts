@@ -17,13 +17,19 @@ export default defineNuxtConfig({
     }
   },
 
-  target: "static",
-
   ssr: false,
 
   typescript: {
     shim: false
   },
+
+  vite: {
+    define: {
+      "process.env": {}
+    }
+  },
+
+  target: "static",
 
   unocss: {
     attributify: true,
@@ -42,12 +48,6 @@ export default defineNuxtConfig({
       date: "mb-0 text-base text-stone-500",
       list: "list-none my-0 pl-0",
       pill: "bg-stone-500 block font-light max-w-fit mb-4 px-3 py-1 rounded-lg text-base text-stone-50"
-    }
-  },
-
-  vite: {
-    define: {
-      "process.env": {}
     }
   }
 })
