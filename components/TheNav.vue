@@ -1,5 +1,5 @@
 <template>
-  <header id="header" class="h-max bg-stone-700 shadow-lg py-4" xl="py-0">
+  <header id="top" class="h-max bg-stone-700 shadow-lg py-4" xl="py-0">
     <nav class="flex flex-col mx-auto max-w-7xl w-10/12" xl="flex-row">
       <NuxtLink
         to="/"
