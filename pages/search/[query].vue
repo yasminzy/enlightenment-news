@@ -2,7 +2,9 @@
   <article class="max-w-[80ch]">
     <SearchBox class="mb-8" />
 
-    <PostList :data="store.results" :style="'simple'" />
+    <div v-if="store.results.length">
+      <PostList :data="store.results" :style="'simple'" />
+    </div>
   </article>
 </template>
 
