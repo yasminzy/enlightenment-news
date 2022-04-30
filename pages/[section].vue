@@ -16,7 +16,7 @@ const section = route.params.section ? route.params.section : path
 const key = useRuntimeConfig().public.guardianApiKey
 
 const { data } = await useFetch(
-  `https://content.guardianapis.com/search?section=${section}&total=18&page-size=18&show-fields=trailText,body,thumbnail&show-tags=keyword&api-key=${key}`
+  `https://content.guardianapis.com/search?section=${section}&page-size=18&show-fields=trailText,body,thumbnail&show-tags=keyword&api-key=${key}`
 )
 
 const title = computed(() => useChangeCase(section, "capitalCase").value)
