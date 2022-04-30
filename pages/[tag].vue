@@ -16,8 +16,8 @@ const tag = route.params.tag ? route.params.tag : path
 const key = useRuntimeConfig().public.guardianApiKey
 
 const { data } = await useFetch(
-  `https://content.guardianapis.com/search?tag=${tag}&total=18&page-size=18&show-fields=trailText,body,thumbnail&show-tags=keyword&api-key=${key}`
-).then()
+  `https://content.guardianapis.com/search?tag=${tag}&page-size=18&show-fields=trailText,body,thumbnail&show-tags=keyword&api-key=${key}`
+)
 
 const title = computed(
   () => `#${useChangeCase(getTitle(tag), "pascalCase").value}`
