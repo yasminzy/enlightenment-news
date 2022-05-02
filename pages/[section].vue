@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Head>
+      <Title>{{ title }}</Title>
+      <Meta name="description" :content="description" />
+    </Head>
+
     <BaseTitle :title="title" />
     <PostList :data="posts" :style="'stacked'" />
   </div>
@@ -20,6 +25,8 @@ const { data } = await useFetch(
 )
 
 const title = computed(() => useChangeCase(section, "capitalCase").value)
+
+const description = computed(() => `${title.value} section posts.`)
 
 const posts = computed(() => data.value?.response.results)
 

@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Head>
+      <Title>Enlightenment News</Title>
+      <Meta name="description" content="Homepage of Enlightenment News." />
+    </Head>
+
     <HomeFeatured class="mb-16" />
     <HomeTopRated />
   </div>

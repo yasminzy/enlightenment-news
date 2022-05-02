@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Head>
+      <Title>{{ title }}</Title>
+      <Meta name="description" :content="description" />
+    </Head>
+
     <BaseTitle :title="title" />
     <PostList :data="posts" :style="'stacked'" />
   </div>
@@ -27,6 +32,8 @@ function getTitle(string) {
   const parts = string.split("/")
   return parts.pop()
 }
+
+const description = computed(() => `Posts with tag ${title.value}.`)
 
 const posts = computed(() => data.value?.response.results)
 
