@@ -1,16 +1,15 @@
 <template>
   <div v-if="data" class="grid gap-12" xl="grid-cols-[3fr_1fr]">
-    <article data-aos="slide-right" class="mx-auto max-w-[80ch]" xl="card ml-0">
-      <h1
-        class="font-medium leading-relaxed text-3xl"
-        xl="mt-0 leading-relaxed text-4xl">
-        {{ title }}
-      </h1>
+    <Head>
+      <Title>{{ title }}</Title>
+      <Meta name="description" :content="description" />
+    </Head>
 
-      <small>{{ date }}</small>
-
-      <div v-interpolation class="mb-0" v-html="body" />
-    </article>
+    <TheArticle
+      data-aos="slide-right"
+      :title="title"
+      :date="date"
+      :body="body" />
 
     <div
       data-aos="slide-left"
@@ -38,6 +37,14 @@ const { data, error, refresh } = await useFetch(
 )
 
 const title = computed(() => data.value?.response.content.webTitle)
+
+const description = computed(
+  () =>
+    `${data.value?.response.content.blocks.body[0].bodyTextSummary.slice(
+      0,
+      150
+    )}...`
+)
 
 const date = computed(
   () =>
