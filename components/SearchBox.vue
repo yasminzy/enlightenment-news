@@ -2,14 +2,14 @@
   <form class="flex max-h-max">
     <input
       v-model="store.query"
-      class="rounded-tl-lg rounded-bl-lg max-h-max border-2 border-stone-500 w-full px-4"
+      class="w-full px-4 border-2 rounded-tl-lg rounded-bl-lg max-h-max border-stone-500"
       placeholder="Looking for something?"
       required
       type="text"
       @keyup.enter="handleInput" />
 
     <button
-      class="border-none rounded-tr-lg rounded-br-lg cursor-pointer flex max-w-fit bg-stone-500 py-2 px-4 text-stone-50 items-center"
+      class="flex items-center px-4 py-2 border-none rounded-tr-lg rounded-br-lg cursor-pointer max-w-fit bg-stone-500 text-stone-50"
       hover="opacity-75"
       @click.prevent="handleInput">
       <div class="i-fe-search" />

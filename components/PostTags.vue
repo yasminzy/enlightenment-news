@@ -1,9 +1,9 @@
 <template>
-  <ul class="flex flex-wrap list-none pt-4 pb-2 pl-0">
+  <ul class="flex flex-wrap pt-4 pb-2 pl-0 list-none">
     <li v-for="(item, index) in tags" :key="index">
       <NuxtLink
         :to="{ name: 'tag', params: { tag: item.id } }"
-        class="rounded-full bg-stone-200 mr-2 text-sm mb-2 py-1 px-3 text-stone-700 inline-block">
+        class="inline-block px-3 py-1 mb-2 mr-2 text-sm rounded-full bg-stone-200 text-stone-700">
         {{ item.title }}
       </NuxtLink>
     </li>

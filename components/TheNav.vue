@@ -1,14 +1,14 @@
 <template>
-  <header id="top" class="h-max bg-stone-700 shadow-lg py-4" xl="py-0">
-    <nav class="flex flex-col mx-auto max-w-7xl w-10/12" xl="flex-row">
+  <header id="top" class="py-4 shadow-lg h-max bg-stone-700" xl="py-0">
+    <nav class="flex flex-col w-10/12 mx-auto max-w-7xl" xl="flex-row">
       <NuxtLink
         to="/"
-        class="rounded-lg border-2 border-stone-50 text-center p-2 text-2xl text-stone-50 inline-block self-center uppercase">
+        class="self-center inline-block p-2 text-2xl text-center uppercase border-2 rounded-lg border-stone-50 text-stone-50">
         Enlightenment News
       </NuxtLink>
 
       <ul
-        class="flex flex-wrap list-none pl-0 justify-center"
+        class="flex flex-wrap justify-center pl-0 list-none"
         lg="justify-around"
         xl="ml-auto">
         <li v-for="(item, index) in nav" :key="index">
@@ -17,7 +17,7 @@
               name: 'section',
               params: { section: item.sectionId }
             }"
-            class="flex flex-col mx-2 p-2 text-stone-50 items-center"
+            class="flex flex-col items-center p-2 mx-2 text-stone-50"
             xl="mx-4">
             {{ item.name }}
           </NuxtLink>

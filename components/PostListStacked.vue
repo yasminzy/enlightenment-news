@@ -1,5 +1,5 @@
 <template>
-  <ul class="list grid gap-8" md="grid-cols-2" xl="grid-cols-3">
+  <ul class="grid gap-8 list" md="grid-cols-2" xl="grid-cols-3">
     <li
       v-for="(item, index) in posts"
       :key="index"
@@ -9,7 +9,7 @@
         <img
           v-lazy="item.img"
           :alt="item.title"
-          class="rounded-lg my-0 w-full" />
+          class="w-full my-0 rounded-lg" />
       </NuxtLink>
 
       <div class="my-4">
@@ -19,7 +19,7 @@
 
         <NuxtLink
           :to="{ name: 'id', params: { id: item.id } }"
-          class="font-medium my-2 block">
+          class="block my-2 font-medium">
           {{ item.title }}
         </NuxtLink>
 

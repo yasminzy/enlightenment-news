@@ -1,10 +1,10 @@
 <template>
   <div
     data-aos="fade"
-    class="flex flex-col font-sans min-h-screen bg-stone-50 text-lg leading-loose w-full text-stone-700 overflow-hidden">
+    class="flex flex-col w-full min-h-screen overflow-hidden font-sans text-lg leading-loose bg-stone-50 text-stone-700">
     <TheNav />
 
-    <main class="mx-auto mb-8 max-w-7xl py-8 w-10/12 prose-stone">
+    <main class="w-10/12 py-8 mx-auto mb-8 max-w-7xl prose-stone">
       <NuxtPage />
     </main>
 
