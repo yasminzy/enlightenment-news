@@ -15,7 +15,7 @@ This is a Nuxt 3 news site demo.
 | Framework         | [Nuxt](https://v3.nuxtjs.org/)                                                               |
 | Hosting           | [Netlify](https://www.netlify.com/)                                                          |
 | Icon              | [Feather Icon](https://icones.js.org/collection/fe)                                          |
-| Lazy loading      | [Vue Lazyload Next](https://github.com/caozhong1996/vue-lazyload-next)                       |
+| Lazy loading      | [Vue Lazyload](https://github.com/hilongjw/vue-lazyload/tree/next)                       |
 | Link catcher      | [Nuxt 3 Interpolation](https://github.com/daliborgogic/interpolation)                        |
 | Linter            | [ESLint](https://eslint.org/)                                                                |
 | Loading indicator | [NProgress](https://ricostacruz.com/nprogress/)                                              |

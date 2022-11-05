@@ -1,5 +1,3 @@
-import { defineNuxtConfig } from "nuxt"
-
 export default defineNuxtConfig({
   css: ["@/assets/css/base.css", "@/assets/css/nprogress.css"],
 
@@ -26,7 +24,5 @@ export default defineNuxtConfig({
     define: {
       "process.env": {}
     }
-  },
-
-  target: "static"
+  }
 })
